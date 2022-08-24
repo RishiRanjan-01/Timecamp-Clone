@@ -24,6 +24,9 @@ const HomePage = () => {
                 <Box height={"100%"} width="32" border={"1px solid red"} >
 
                 </Box>
+                <Box>
+                    <Text>Dashboard</Text>
+                </Box>
             </Box>
         </Box>
     </Box>
