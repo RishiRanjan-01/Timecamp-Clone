@@ -1,8 +1,13 @@
 const express = require("express");
 require("dotenv").config();
 const cors = require("cors");
+var jwt = require("jsonwebtoken");
 const session = require("express-session");
+
 const passport = require("./config/googleauth");
+const userroute = require("./controllers/user.controller");
+const connection = require("./config/db");
+
 const app = express();
 
 app.use(session({ secret: "keyboard cat" }));
@@ -10,11 +15,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(cors());
-
-const userroute = require("./controllers/user.controller");
-const connection = require("./config/db");
-
 app.use(express.json());
+
 
 app.use("/user", userroute);
 
@@ -33,8 +35,16 @@ app.get(
 );
 
 app.get("/", (req, res) => {
-  console.log(req.user.displayName);
-  res.send("Homepage");
+    const {email, name, picture} = req.user._json;
+
+    const token = jwt.sign({ email: email }, process.env.secret);
+  res.send({
+    "email":email,
+    "name":name,
+    "profile_pic":picture,
+    "message": "Login Successfull",
+    token
+  });
 });
 
 app.listen(process.env.PORT, async () => {

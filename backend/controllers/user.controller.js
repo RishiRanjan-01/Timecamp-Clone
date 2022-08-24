@@ -36,7 +36,7 @@ userroute.post("/login", async (req, res) => {
   const user = await UserModel.findOne({ email });
 
   if (user) {
-    const token = jwt.sign({ data: "foobar" }, process.env.secret);
+    const token = jwt.sign({ email:email }, process.env.secret);
     return res.send({ message: "Login Successfull", token });
   } else {
     return res.send("Invalid Credentials");
