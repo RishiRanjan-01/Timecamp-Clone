@@ -15,9 +15,10 @@ userroute.use(validator, emailvalidator);
 userroute.post("/register", passwordvalidator, async (req, res) => {
   const { email, password, phone } = req.body;
 
-  const user = await UserModel.findOne({ $or: [{ email }, { phone }] });
+  const user = await UserModel.findOne({ email:email });
 
   if (user) {
+    console.log(user)
     return res.send("User Already Exists");
   }
 
