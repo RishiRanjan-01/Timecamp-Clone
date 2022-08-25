@@ -16,7 +16,7 @@
     cursor: pointer;
 }
 
-.billcardleft::before{
+.paymentcheck{
     /* content: "\f00c"; */
     text-align: center;
     width: 34px;
