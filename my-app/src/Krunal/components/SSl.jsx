@@ -7,7 +7,7 @@ import {
   Heading
 } from '@chakra-ui/react';
 
-const SSl = () => {
+const SSL = () => {
   return (
     <Box  w={{base:'95%',sm:'95%',md:'95%',lg:'80%'}} margin='auto' bgColor='orange' borderRadius='30px' py='10'>
 
@@ -31,4 +31,4 @@ const SSl = () => {
   )
 }
 
-export default SSl
+export default SSL
