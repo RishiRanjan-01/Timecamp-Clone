@@ -7,7 +7,7 @@ const emailvalidator = require("../middlewares/emailvalidator");
 const passwordvalidator = require("../middlewares/passwordvalidator");
 const UserModel = require("../models/User.model");
 
-const userroute = express.Router();
+const userroute = express.Router()
 const saltRounds = Number(process.env.SALT);
 
 userroute.use(validator, emailvalidator);
