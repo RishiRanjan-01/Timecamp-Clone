@@ -7,10 +7,10 @@ import {
 } from '@chakra-ui/react';
 import Styles from "../home page/Home.module.css"
 import google from "../../images/google.svg"
+import Navbar from "../Navbar"
 const Home = () => {
   return (
     <>
-
    <Box  className={Styles.back} >
 
     <Flex className={Styles.row} direction={{base:'column',sm:'column',md:'column',lg:'row'}} >
@@ -57,9 +57,6 @@ const Home = () => {
                alt=""
              />
            </Flex>
-
-       
-
     </Flex>
    </Box>
 

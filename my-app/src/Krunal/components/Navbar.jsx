@@ -27,10 +27,11 @@ export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
 
   return (
-    <Box>
+    
+    <Box w='100%'  zIndex='11' position='sticky' top='0'>
       <Flex
         bg={useColorModeValue('white', 'gray.800')}
-        color={useColorModeValue('gray.600', 'white')}
+        color={useColorModeValue('black', 'white')}
         minH={'60px'}
         py={{ base: 2 }}
         px={{ base: 4 }}
@@ -40,32 +41,32 @@ export default function WithSubnavigation() {
         align={'center'}>
 
 
-        <Flex flex={{ base: 1 }} justify={{ base: 'start', md: 'start' }}>
+        <Flex py='5' flex={{ base: 1 }} justify={{ base: 'start', md: 'start' }}>
           <Text
-            textAlign={useBreakpointValue({ base: 'start', md: 'left' })}
+            textAlign={useBreakpointValue({ base: 'start', md:'start',lg: 'left' })}
             fontFamily={'heading'}
-            ml={{base:0,md:0,lg:150}}
+            ml={{base:0,md:0,lg:'8rem'}}
             color={useColorModeValue('gray.800', 'white')}>
                 <img src={Logo} alt="Logo"  />
           </Text>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={20}>
+          <Flex display={{ base: 'none', md: 'none',lg:'flex' }} ml={20}>
             <DesktopNav />
           </Flex>
         </Flex>
 
         
         <Stack
-          flex={{ base: 1, md: 0 }}
+          flex={{ base: 1, md: 1,lg:0 }}
           justify={'flex-end'}
           direction={'row'}
           spacing={6}>
 
           <Flex
-          flex={{ base: 1, md: 'auto' }}
+          flex={{ base: 1, md:1,lg: 'auto' }}
           ml={{ base: -2 }}
           justify={'flex-end'}
-          display={{ base: 'flex', md: 'none' }}>
+          display={{ base: 'flex', md:'flex',lg: 'none' }}>
           <IconButton
             onClick={onToggle}
             icon={
@@ -84,18 +85,19 @@ export default function WithSubnavigation() {
         <MobileNav />
       </Collapse>
     </Box>
+   
   );
 }
 
 const DesktopNav = () => {
-  const linkColor = useColorModeValue('gray.600', 'gray.200');
-  const linkHoverColor = useColorModeValue('gray.800', 'white');
+  const linkColor = useColorModeValue('black', 'gray.200');
+  const linkHoverColor = useColorModeValue('black', 'white');
   const popoverContentBgColor = useColorModeValue('white', 'gray.800');
 
   return (
-    <Stack direction={'row'} spacing={4}>
+    <Flex direction={'row'}  alignItems='center' gap='2rem'>
       {NAV_ITEMS.map((navItem) => (
-        <Box key={navItem.label}>
+        <Flex  key={navItem.label}  >
           <Popover trigger={'hover'} placement={'bottom-start'}>
             <PopoverTrigger>
               <Link
@@ -128,14 +130,14 @@ const DesktopNav = () => {
               </PopoverContent>
             )}
           </Popover>
-        </Box>
+        </Flex>
       ))}
-      <Button>sjfb</Button>
-    </Stack>
+      <Button bgColor="yellow" borderRadius='20px' px='5'>Start tracking time</Button>
+    </Flex>
   );
 };
 
-const DesktopSubNav = ({ label, href, icon }) => {
+const DesktopSubNav = ({ label, href }) => {
   return (
     <Link
       href={href}
@@ -143,17 +145,17 @@ const DesktopSubNav = ({ label, href, icon }) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('pink.50', 'gray.900') }}>
+      _hover={{ bg: useColorModeValue('green', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
-        <Box display="flex" gap="5">
-            <Text fontSize={'sm'}>{icon}</Text>
+       
           <Text
             transition={'all .3s ease'}
-            _groupHover={{ color: 'pink.400' }}
+            _groupHover={{ color: 'white' }}
             fontWeight={500}>
             {label}
           </Text>
-        </Box>
+
+
         <Flex
           transition={'all .3s ease'}
           transform={'translateX(-10px)'}
@@ -162,7 +164,7 @@ const DesktopSubNav = ({ label, href, icon }) => {
           justify={'flex-end'}
           align={'center'}
           flex={1}>
-          <Icon color={'pink.400'} w={5} h={5} as={ChevronRightIcon} />
+          <Icon color={'white'} w={5} h={5} as={ChevronRightIcon} />
         </Flex>
       </Stack>
     </Link>
@@ -174,10 +176,12 @@ const MobileNav = () => {
     <Stack
       bg={useColorModeValue('white', 'gray.800')}
       p={4}
-      display={{ md: 'none' }}>
+      display={{ lg: 'none' }}>
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
+      <Button bgColor="yellow" borderRadius='20px' px='5'>Start tracking time</Button>
+
     </Stack>
   );
 };
@@ -229,6 +233,7 @@ const MobileNavItem = ({ label, children, href }) => {
         </Stack>
       </Collapse>
     </Stack>
+    
   );
 };
 
@@ -240,37 +245,30 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'Productivity tracking',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Automatic time tracking',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Reporting',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Timesheet approvals',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Invoicing',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Billing rates and budgeting',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Attendance',
-        icon: 'icon',
         href: '#',
       },
     ],
@@ -284,37 +282,30 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'Trello',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Google Calender',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'iCal',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Asana',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Monday.com',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'Jira',
-        icon: 'icon',
         href: '#',
       },
       {
         label: 'All integrations',
-        icon: 'icon',
         href: '#',
       }
     ],
