@@ -7,7 +7,7 @@ const emailvalidator = require("../middlewares/emailvalidator");
 const passwordvalidator = require("../middlewares/passwordvalidator");
 const UserModel = require("../models/User.model");
 
-const userroute = express.Router();
+const userroute = express.Router()
 const saltRounds = Number(process.env.SALT);
 
 userroute.use(validator, emailvalidator);
@@ -15,9 +15,10 @@ userroute.use(validator, emailvalidator);
 userroute.post("/register", passwordvalidator, async (req, res) => {
   const { email, password, phone } = req.body;
 
-  const user = await UserModel.findOne({ $or: [{ email }, { phone }] });
+  const user = await UserModel.findOne({ email:email });
 
   if (user) {
+    console.log(user)
     return res.send("User Already Exists");
   }
 

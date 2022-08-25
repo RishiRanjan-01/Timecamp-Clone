@@ -4,10 +4,11 @@ import Demoaccord2 from './Demoaccord2';
 import {
   Box,
   Text,
-  Link,
+  Flex,
   Heading,
   Accordion
 } from '@chakra-ui/react';
+import { ArrowForwardIcon } from '@chakra-ui/icons'
 
 const employee=[
     {title:'Check logged time on the handy Timesheet',text:"Enjoy the transparency - check your employees time records with more detailed information on the handy timesheet or a graphical, calendar-like view.",img:'https://cdn-m.timecamp.com/img/greenbranding/features/img-home-features.png'},
@@ -31,10 +32,20 @@ const hr=[
 ]
 const Demo = () => {
   return (
+    <>
+    <Box   my='20'>
+
+        <Flex my='10' direction={{base:'column',lg:'row'}} fontWeight='bold' justifyContent='center' textAlign='center' gap='5'>
+            <Text>Want to track time in your team ?</Text>
+            <Text color='green'>Book a Demo <ArrowForwardIcon/></Text>
+        </Flex>
+        <Heading textAlign={{base:'start',lg:'center'}} m='auto' w='80%' >Try an automatic, easy-to-use time tracker for the entire organization!</Heading>
+    </Box>
+
     <Box w='90%' m='auto'>
     <Text color='green' fontWeight='700'>FOR EMPLOYEES</Text>
     <Heading my='5'>Track your employees working time</Heading>
-    <Text my='3'>Log working hours of your employees automatically or manually and make sure they are billed fairly.</Text>
+    <Text my='5' fontWeight='500'>Log working hours of your employees automatically or manually and make sure they are billed fairly.</Text>
 <Accordion allowToggle>
 
 {employee.map((e)=>{
@@ -42,9 +53,11 @@ const Demo = () => {
 })}
 </Accordion>
 
+<Box my='10' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Track employees time</Box>
+
     <Text color='green' fontWeight='700'>FOR MANAGRESS</Text>
     <Heading my='5'>Track project time and budget easier than ever before</Heading>
-    <Text my='3'>Stay on top of your team’s performance and create accurate resource estimates for all the projects.</Text>
+    <Text my='5' fontWeight='500'>Stay on top of your team’s performance and create accurate resource estimates for all the projects.</Text>
 <Accordion allowToggle>
 
 {manager.map((e)=>{
@@ -52,9 +65,11 @@ const Demo = () => {
 })}
 </Accordion>
 
+<Box my='10' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Increase team productivity</Box>
+
     <Text color='green' fontWeight='700'>ENTERPRISE</Text>
     <Heading my='5'>Try enterprise time tracking at the highest level</Heading>
-    <Text my='3'>Custom needs? No problem! Contact us, and we will definitely find a perfect solution for your enterprise.</Text>
+    <Text my='5' fontWeight='500'>Custom needs? No problem! Contact us, and we will definitely find a perfect solution for your enterprise.</Text>
 <Accordion allowToggle>
 
 {enterprise.map((e)=>{
@@ -62,9 +77,11 @@ const Demo = () => {
 })}
 </Accordion>
 
+<Box my='10' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Contact for customized solution</Box>
+
     <Text color='green' fontWeight='700' >FOR HR</Text>
     <Heading my='5'>Check Timesheets and control attendance in one place</Heading>
-    <Text my='3'>With TimeCamp you can forget about endless stacks of papers! Take advantage of convenient and easy to use tools to support your daily HR and payroll work..</Text>
+    <Text my='5' fontWeight='500'>With TimeCamp you can forget about endless stacks of papers! Take advantage of convenient and easy to use tools to support your daily HR and payroll work..</Text>
 <Accordion allowToggle>
 
 {hr.map((e)=>{
@@ -72,10 +89,9 @@ const Demo = () => {
 })}
 </Accordion>
 
-
-       
-
+<Box my='20' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Make HR's work easier</Box>
     </Box>
+    </>
   )
 }
 
