@@ -14,42 +14,42 @@ const connection = require("./config/db");
 
 const app = express();
 
- app.use(session({ secret: "keyboard cat" }));
- app.use(passport.initialize());
- app.use(passport.session());
+app.use(session({ secret: "keyboard cat" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
- app.use(cors());
- app.use(express.json());
+app.use(cors());
+app.use(express.json());
 
+app.use("/user", userroute);
 
- app.use("/user", userroute);
-
- app.get(
+app.get(
   "/auth/google",
   passport.authenticate("google", { scope: ["profile", "email"] })
- );
+);
 
- app.get(
-   "/auth/google/callback",
-   passport.authenticate("google", { failureRedirect: "/login" }),
-   function (req, res) {
-     // Successful authentication, redirect home.
-     res.redirect("/");
-   }
- );
+app.get(
+  "/auth/google/callback",
+  passport.authenticate("google", { failureRedirect: "/login" }),
+  function (req, res) {
+    // Successful authentication, redirect home.
+    res.redirect("/");
+  }
+);
 
- app.get("/", (req, res) => {
-     const {email, name, picture} = req.user._json;
+app.get("/", (req, res) => {
+  const { email, name, picture, sub } = req.user._json;
+  console.log(req.user._json);
+  const token = jwt.sign({ email: email, userId: sub }, process.env.secret);
 
-     const token = jwt.sign({ email: email }, process.env.secret);
-   res.send({
-     "email":email,
-     "name":name,
-     "profile_pic":picture,
-     "message": "Login Successfull",
-     token
-   });
- });
+  res.send({
+    email: email,
+    name: name,
+    profile_pic: picture,
+    message: "Login Successfull",
+    token,
+  });
+});
 
 app.listen(process.env.PORT, async () => {
   try {
@@ -60,9 +60,10 @@ app.listen(process.env.PORT, async () => {
   }
 
   console.log("server started");
-})
+});
 
-{/* Sandeep  routes
+{
+  /* Sandeep  routes
 
 app.use('/invoce',InvoiceController)
 
@@ -75,4 +76,5 @@ app.listen(process.env.PORT, async () => {
   }
 
   console.log("server started");
-});*/}
+});*/
+}
