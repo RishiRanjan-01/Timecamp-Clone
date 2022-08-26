@@ -1,12 +1,12 @@
 const express = require("express");
 require("dotenv").config();
-const cors = require("cors");
-var jwt = require("jsonwebtoken");
-const session = require("express-session");
+// const cors = require("cors");
+// var jwt = require("jsonwebtoken");
+// const session = require("express-session");
 
-const passport = require("./config/googleauth");
-const userroute = require("./controllers/user.controller");
-const connection = require("./config/db");
+// const passport = require("./config/googleauth");
+// const userroute = require("./controllers/user.controller");
+// const connection = require("./config/db");
 
 //   Sandeep imports
 const Invoiceconnection=require('./config/siddb')
@@ -54,7 +54,7 @@ const app = express();
 
 // Sandeep  routes
 
-app.use('/invoce',InvoiceController)
+app.use('/invoice',InvoiceController)
 
 app.listen(process.env.PORT, async () => {
   try {
