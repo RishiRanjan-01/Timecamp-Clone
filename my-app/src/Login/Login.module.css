@@ -1,0 +1,11 @@
+.logindiv {
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  width: 42%;
+  border-radius: 20px;
+  text-align: center;
+  padding-bottom: 50px;
+}
+
+.parentdiv{
+    display:flex;
+}

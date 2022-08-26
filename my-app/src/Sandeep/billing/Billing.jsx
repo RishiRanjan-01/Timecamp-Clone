@@ -10,7 +10,7 @@ import Payment3 from "./Payment3";
 import Payment2 from "./Payment2";
 
 const Billing = () => {
-  const [toggle, setToggle] = useState("");
+  const [toggle, setToggle] = useState("C");
 
   return (
     <Box>
@@ -108,6 +108,7 @@ const Billing = () => {
                   annually,10$
                   <br /> monthly
                 </Text>
+                
               </Center>
             </Box>
             <Box

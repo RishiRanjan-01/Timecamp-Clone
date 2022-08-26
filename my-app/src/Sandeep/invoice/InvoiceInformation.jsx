@@ -11,6 +11,7 @@ import {
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
+import axios from "axios";
 import React, { useState } from "react";
 import CountryDropDown from "./CountryDropDown";
 import styles from "./InvoiceInformation.module.css";
@@ -20,7 +21,7 @@ const InvoiceInformation = () => {
 
   //  giving count to input to change price
   let [count, setCount] = useState(localStorage.getItem("count") || 1);
-
+   console.log(count)
   //    form input data
   const [voice, setVoice] =useState({
           name:'',
@@ -30,7 +31,30 @@ const InvoiceInformation = () => {
           postal:'',
           country:'',
   })
+
+  const handlePost=()=>{
+       axios('http://localhost:8080/invoice/post',{
+        method:"POST",
+        headers:{
+            "Content-Type":"application/json"
+        },
+        data:voice,
+       })
+       .then((res)=>res.data)
+       .catch((error)=>console.log(error))
+  }
   
+  const handleForm=(e)=>{
+    let value=e.target.value
+    let name=e.target.name
+        setVoice({
+            ...voice,
+            [name]:value
+        })
+       
+  }
+  console.log(voice)
+
 
   // here initializing count to 1 before switching from month to year or vice versa
   const handleRadio = () => {
@@ -58,6 +82,9 @@ const InvoiceInformation = () => {
               </Text>
               <label>Company name / your name</label>
               <Input
+              name="name"
+              value={voice.name}
+              onChange={handleForm}
               required
               isInvalid
               errorBorderColor="red"
@@ -67,7 +94,9 @@ const InvoiceInformation = () => {
             <Box m="10px 0px">
               <label>Send invoice to (optional)</label>
               <Input
-              
+              name="invoice"
+               value={voice.invoice}
+               onChange={handleForm}
               isInvalid
               errorBorderColor="red"
               focusBorderColor='lightgreen'
@@ -79,6 +108,9 @@ const InvoiceInformation = () => {
               </Text>
               <label htmlFor="">Address</label>
               <Input 
+              name="address"
+               value={voice.address}
+               onChange={handleForm}
               isInvalid
               required
               errorBorderColor="red"
@@ -88,21 +120,27 @@ const InvoiceInformation = () => {
             <Box m="10px 0px">
               <label>City</label>
               <Input
+              name="city"
+               value={voice.city}
+               onChange={handleForm}
               isInvalid
               required
               errorBorderColor="red"
               focusBorderColor='lightgreen'
-               border={"none"} backgroundColor={"#f8f8f8"} type="number" />
+               border={"none"} backgroundColor={"#f8f8f8"} type="text" />
             </Box>
             <Box m="10px 0px">
               <label>Zip / Postal</label>
               <Input 
+              name="postal"
+               value={voice.postal}
+               onChange={handleForm}
               required
               border={"none"}
               isInvalid
               errorBorderColor="red"
               focusBorderColor='lightgreen'
-               backgroundColor={"#f8f8f8"} type="text" />
+               backgroundColor={"#f8f8f8"} type="number" />
             </Box>
             <Box m="10px 0px">
               <label>Country</label>
@@ -169,7 +207,7 @@ const InvoiceInformation = () => {
             justifyContent="space-between"
           >
             <Text>Plan:</Text>
-            <Text>Basic</Text>
+            <Text>{localStorage.getItem('pro')}</Text>
           </Box>
           <Box
             marginTop={"30px"}
@@ -231,6 +269,7 @@ const InvoiceInformation = () => {
             )}
           </Box>
           <Button
+          onClick={handlePost}
             color="white"
             backgroundColor={"#4bb063"}
             _hover={{ backgroundColor: "lightgreen" }}

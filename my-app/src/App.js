@@ -6,14 +6,23 @@ import HomePage from './pages/HomePage';
 // import InvoiceInformation from './Sandeep/invoice/InvoiceInformation';
 // import Tabbs from './Sandeep/tabs/Tabs';
 // import Signuppage from './Signup/Signuppage';
+import { Route, Routes } from 'react-router-dom';
+import Loginpage from './Login/Loginpage';
+import Billing from './Sandeep/billing/Billing';
+import InvoiceInformation from './Sandeep/invoice/InvoiceInformation';
+import ShowInvoice from './Sandeep/invoice/ShowInvoice';
+import InvoiceRouter from './Sandeep/sRouter/InvoiceRouter';
+import Tabbs from './Sandeep/tabs/Tabs';
+import Signuppage from './Signup/Signuppage';
+
 
 function App() {
   return (
-    <>
-       {/* <Tabbs/>
-     <Billing/>  */}
-        <HomePage/>
-      {/* <Routes>
+    <div className="App">
+      <InvoiceInformation/>
+     <InvoiceRouter/>
+     <HomePage/>
+      <Routes>
         <Route path="/signuppage" element={<Signuppage />}></Route>
       </Routes>
       <Routes>
@@ -21,7 +30,6 @@ function App() {
       </Routes>
       <Tabbs/>
      <Billing/>
-     <InvoiceInformation/>  */}
     </>
   );
 }

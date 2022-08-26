@@ -28,7 +28,13 @@ const Payment3 = () => {
   const handleCount = (e) => {
     setCount(e.target.value);
     localStorage.setItem("count", count);
+    console.log(count)
   };
+
+  const handlePayment=()=>{
+      let pro="pro"
+         localStorage.setItem('pro',pro)
+  }
   return (
     <Box className={styles.leftboxdetail}>
       <Box className={styles.leftlist}>
@@ -139,6 +145,7 @@ const Payment3 = () => {
           )}
         </Box>
         <Button
+        onClick={handlePayment}
           color="white"
           backgroundColor={"#4bb063"}
           _hover={{ backgroundColor: "lightgreen" }}

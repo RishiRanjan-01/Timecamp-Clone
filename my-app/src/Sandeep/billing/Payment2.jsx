@@ -27,7 +27,7 @@ const Payment2 = () => {
     setCount(e.target.value);
     localStorage.setItem("count", count);
   };
-
+  
   // here initializing count to 1 before switching from month to year or vice versa
   const handleRadio = () => {
     count = 1;
@@ -37,6 +37,13 @@ const Payment2 = () => {
     count = 1;
     setToggle(false)
   };
+
+  const handlePayment=()=>{
+    let pro="basic"
+    
+       localStorage.setItem('pro',pro)
+    
+}
   return (
     <Box className={styles.leftboxdetail}>
       <Box className={styles.leftlist}>
@@ -140,6 +147,7 @@ const Payment2 = () => {
           )}
         </Box>
         <Button
+        onClick={handlePayment}
           color="white"
           backgroundColor={"#4bb063"}
           _hover={{ backgroundColor: "lightgreen" }}
