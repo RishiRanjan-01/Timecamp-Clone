@@ -10,6 +10,7 @@ import Signuppage from './Signup/Signuppage';
 function App() {
   return (
     <div className="App">
+      {/*<Tabbs/>*/}
       {/* <Tabbs/>
      <Billing/> */}
      <HomePage/>
@@ -21,7 +22,7 @@ function App() {
       </Routes>
       <Tabbs/>
      <Billing/>
-     <InvoiceInformation/> */}
+     <InvoiceInformation/>
     </div>
   );
 }
