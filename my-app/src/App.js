@@ -1,4 +1,5 @@
 
+import HomePage from './pages/HomePage';
 import { Route, Routes } from 'react-router-dom';
 import Loginpage from './Login/Loginpage';
 import Billing from './Sandeep/billing/Billing';
@@ -10,6 +11,9 @@ function App() {
   return (
     <div className="App">
       {/*<Tabbs/>*/}
+      {/* <Tabbs/>
+     <Billing/> */}
+     <HomePage/>
       <Routes>
         <Route path="/signuppage" element={<Signuppage />}></Route>
       </Routes>
