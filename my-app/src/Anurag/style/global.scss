@@ -1,0 +1,40 @@
+html {
+    font-family: 'Patrick Hand', cursive !important;
+}
+
+.container{
+    margin-top: 40px;
+    margin: auto;
+    width: 80%;
+}
+.big-box{
+    border :2px solid black;
+    width: 80%;
+    margin: auto;
+    display: flex;
+    margin-top: 40px;
+}
+.first-box{
+   width: 5px;
+//    margin-left: 20px;
+
+}
+.second-box{
+    margin-left: 170px;
+    padding: 7px;
+
+}
+.third-box{
+    border: 1px solid grey;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left:200px;
+    padding-top:10px;
+
+}
+
+.fourth-box{
+    padding: 5px;
+    padding-top: 10px;
+    border: 1px solid grey;
+}

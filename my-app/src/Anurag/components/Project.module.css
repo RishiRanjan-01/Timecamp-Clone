@@ -1,0 +1,296 @@
+.mainbox{
+    height: 900px;
+    width: 98%;
+    background-color: #f2f6f8;
+    margin: auto;
+    
+}
+.create{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    border: 1px  #CCD7DD;
+    color: #666;
+    font-size: 1.5rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    background-color: #f2f6f8;
+    margin-bottom: 60px;
+
+    
+    
+}
+.button{
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: transparent;
+    border: 1px solid transparent;
+    padding: .608rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: 2px;
+    padding: .608rem .75rem;
+    transition: color .15s ;
+    border: 1px solid #03A9F4;
+    color: #03a9f4;
+    
+}
+.filterbox{
+    /* border: 1px solid #CCD7DD;
+    display: flex;
+    flex-direction: row;
+    height: 75px;
+    justify-content: space-between; */
+    position: relative;
+    display: flex;
+
+    flex-direction: row;
+    background-color: #fff;
+    background-clip: border-box;
+    border: 1px solid #C6D2D9;
+    border-radius: 2px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    margin-bottom: 65px;
+}
+.filterbox>h4{
+    margin: 28px 15px 25px 5px;
+    color: #9999A6;
+}
+.filterbox>select{
+    height: 45px;
+    width: 95px;
+    margin: 15px 0 15px 0 ;
+    border: none;
+    background: white;
+    color: #666666;
+    border-right: 1px dotted #CCD7DD;
+    border-left: 1px dotted #CCD7DD;
+}
+.filterbox>h1{
+    margin-left: 1%;
+        margin-right:1%;
+        color: #CCD7DD;
+}
+.filterbox>input{
+    
+    height: 45px;
+    width: 78%;
+    background-color: #fff;
+    background-clip: border-box;
+    border-radius: 2px;
+    margin: 15px 15px 15px 0 ;
+    padding-left: 5px;
+    border: 1px solid #C6D2D9;
+    outline: none;
+}
+.filterbox>button{
+    height: 42px;
+        width: 8.5%;
+        margin-right: 10px;
+        margin-top: 16px;
+        background: #03A9F4;
+        color: white;
+        border: 1px solid #03A9F4;
+        outline: none;
+        cursor: pointer;
+}
+.heading > h5 {
+    /* margin-left: 2%;
+    margin-top: 10px; */
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.5;
+    padding: 0 1.4286rem;
+    margin-bottom: 0;
+    background-color: #e4eaee;
+    border-bottom: 1px solid #C6D2D9;
+}
+.projectDetails {
+    display: flex;
+    border: 1px solid #C6D2D9;
+    padding: 15px;
+    border-spacing: 2px;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    background-color: #f2f6f8;
+}
+.checkbox{
+     padding: .743rem;
+    display: block;
+    min-height: 0.52rem;
+    width: 4%;
+}
+.name{
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: inherit;
+    font-weight: 400;
+    line-height: 1.5;
+}
+.amountLabel {
+    margin-left: 9%;
+}
+
+.clientsLabel {
+    width: 10%;
+    margin-left: 12%;
+    margin-right: 1%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    background-color: #f2f6f8;
+}
+.trackedLabel{
+    
+    margin-left: 2%;
+    margin-right: -1%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    background-color: #f2f6f8;
+}
+
+.progressLabel {
+    width: 20%;
+    margin-left: 12%;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    background-color: #f2f6f8;
+}
+
+label {
+    font-size: 12px;
+    margin-top: 2px;
+    color: grey;
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #333;
+    text-align: left;
+    background-color: #f2f6f8;
+}
+
+
+
+
+
+.projectDataDetails {
+    border: 1px solid #C6D2D9;
+    display: flex;
+    color: grey;
+    border-bottom: none;
+    border-left: none;
+    font-weight: 400;
+    vertical-align: middle;
+    padding: .7143rem;
+}
+.projectstracked {
+    width: 10%;
+}
+
+.clientsData {
+    width: 20%;
+    margin-left: 10%;
+}
+.namesData{
+    width: 9%;
+    margin-left: 2%;
+}
+.projectamountLabel {
+    margin-left: 7%;
+}
+
+.projectprogressLabel{
+    margin-left: 10%;
+}
+
+.projectaccessLabel {
+    margin-left: 19%;
+}
+
+.favouriteButton {
+    margin-left: 11.9%;
+}
+
+
+
+
+/* Project Modal css */
+
+.projectModal {
+    height: 259px;
+    width: 35%;
+    margin: auto;
+    margin-top: 16%;
+    border: 1px solid #666666;
+    border-radius: 2px;
+    outline: none;
+    background-color:  white;
+   
+}
+
+.modalHeading {
+    height: 60px;
+    margin-left: 4%;
+    color: #666666;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.inputBox {
+    display: flex;
+    height: 70px;
+    margin-top: 4%;
+}
+
+.inputBox > input {
+    height: 30px;
+    margin-left: 13%;
+    height: 30px;
+    outline: none;
+    padding-left: 5px;
+    border: 1px solid ;
+}
+
+.projectModalButtons >  button:nth-child(1) {
+    border: none;
+    color: #57C4F5;
+    margin-left: 52%;
+    
+}
+
+.projectModalButtons >  button:nth-child(2) {
+    border: 1px solid #57C4F5;
+    width: 20%;
+    background: #57C4F5;
+    color: white;
+    margin-left: 18%;
+    height: 40px;
+}
+
+.selectBox > select {
+    width: 41.7%;
+    margin-left: 50%;
+    margin-top: 1%;
+    height: 45px;
+    outline: none;
+}
