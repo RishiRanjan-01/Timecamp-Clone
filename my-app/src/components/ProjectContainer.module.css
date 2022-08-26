@@ -1,0 +1,10 @@
+
+/* .hoverbox{
+    display: none;
+}
+.mainBox:hover::after+.hoverbox{
+    display: none;
+} */
+/* .mainBox:hover+.hoverbox{
+    display: block;
+} */
