@@ -11,6 +11,7 @@ import {BsFolder2Open} from "react-icons/bs";
 import { BsTags } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { AiOutlineCheckSquare } from "react-icons/ai";
+import Reports from './Reports';
 
 const MySidebar = ({setboxWidth}) => {
     const [toggle, setToggle ] = useState(false);
@@ -49,7 +50,7 @@ const MySidebar = ({setboxWidth}) => {
             </Flex>
             <Flex width={"88%"} mt= "2"  justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <TbChartPie size={"25px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Reports</Text>}
+                { toggle ? null : <Reports/>}
                 {toggle ? null : <AiOutlineRight/>}
             </Flex>
             <Flex width={"100%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"10px"}>
