@@ -9,7 +9,7 @@ import Signuppage from './Signup/Signuppage';
 function App() {
   return (
     <div className="App">
-      {/* <Tabbs/>
+      <Tabbs/>
       <Routes>
         <Route path="/signuppage" element={<Signuppage />}></Route>
       </Routes>
@@ -18,7 +18,7 @@ function App() {
       </Routes>
       <Tabbs/>
      <Billing/>
-     <InvoiceInformation/> */}
+     <InvoiceInformation/>
     </div>
   );
 }
