@@ -1,7 +1,11 @@
 
 const emailvalidator = (req,res,next) => {
-
-    let {email} = req.body;
+    let email;
+    if(req.method !== "GET"){
+    email = req.body.email;
+    }else{
+        email = req.headers.email; 
+    }
 
     let end = "";
 

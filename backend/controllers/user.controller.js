@@ -52,4 +52,33 @@ userroute.post("/login", async (req, res) => {
   }
 });
 
+userroute.get("/getuser",async (req,res) => {
+  let { email } = req.headers;
+
+  const user = await UserModel.findOne({ email });
+if(user){
+  res.send("Valid");
+}else{
+  res.send("User does not exist");
+}
+})
+
+userroute.post("/updateuser",passwordvalidator, async (req, res) => {
+  let { email,password } = req.body;
+
+  const user = await UserModel.findOne({ email });
+  if (user) {
+    bcrypt.hash(password, saltRounds, async function (err, hash) {
+      if (!err) {
+        await UserModel.updateOne({email},({$set:{password:hash}}));
+        res.send("Password Updated Successfully");
+      } else {
+        return res.send("Invalid Credentials");
+      }
+    });
+  } else {
+    res.send("Please try again later");
+  }
+});
+
 module.exports = userroute;

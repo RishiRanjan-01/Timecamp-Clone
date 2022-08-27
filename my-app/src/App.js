@@ -19,39 +19,22 @@ import { Box, Flex, Grid } from '@chakra-ui/react';
 import MySidebar from './components/MySidebar';
 import { GrAid } from 'react-icons/gr';
 import PaymentCard from './Sandeep/payment/PaymentCard';
+import Forgotpassword from './Login/Forgotpassword';
+import Password from './Login/Password';
 
 
 function App() {
   return (
     <>
+    {/* Needed */}
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
-
-      {/* <InvoiceInformation/> */}
-     {/* <HomePage/> */}
-      <InvoiceInformation/>
-     
-     <HomePage/>
-      <Routes>
-
-
         <Route path="/signuppage" element={<Signuppage />}></Route>
         <Route path="/loginpage" element={<Loginpage />}></Route>
-
-      </Routes> */}
-      
-      <InvoiceRouter/>
-        
-        {/* <MySidebar/> */ }
-        {/* <PaymentCard/> */}   
-        {/* <BillingAddress/> */}
-     
-    </div>
-
+        <Route path="/forgotten_password" element={<Forgotpassword />}></Route>
+        <Route path="/password" element={<Password />}></Route>
       </Routes>
-    </div>
-      <Tabbs/>
-     <Billing/>
+      {/* Needed */}
     </>
   );
 }

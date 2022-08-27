@@ -9,19 +9,19 @@ require("dotenv").config();
  const connection = require("./config/db");
 
 //   Sandeep imports
-const Invoiceconnection=require('./config/siddb')
-const InvoiceController=require('./controllers/invoice.controller')
+// const Invoiceconnection=require('./config/siddb')
+// const InvoiceController=require('./controllers/invoice.controller')
 
 const app = express();
 
-// app.use(session({ secret: "keyboard cat" }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({ secret: "keyboard cat" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(cors());
+ app.use(cors());
 app.use(express.json());
 
-// app.use("/user", userroute);
+app.use("/user", userroute);
 
 const authenticated = (req, res, next) => {
   next();
@@ -56,6 +56,17 @@ app.get("/googleuser", authenticated, (req, res) => {
   });
 });
 
+app.listen(process.env.PORT, async () => {
+  try {
+    await connection;
+    console.log("Connection Established");
+  } catch (err) {
+    console.log(err);
+  }
+
+  console.log("server started")
+})
+
 
 // app.get(
 //   "/auth/google",
@@ -88,8 +99,8 @@ app.get("/googleuser", authenticated, (req, res) => {
 
 
 {
-  /* Sandeep  routes*/
-}
+  /* Sandeep  routes
+
 
 app.use('/invoice',InvoiceController)
 
@@ -102,4 +113,4 @@ app.listen(process.env.PORT, async () => {
   }
 
   console.log("server started");
-});
+})*/}

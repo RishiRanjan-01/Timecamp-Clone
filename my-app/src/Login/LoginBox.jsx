@@ -4,7 +4,7 @@ import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import styles from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useEffect } from "react";
 
 const LoginBox = () => {
@@ -98,9 +98,11 @@ const LoginBox = () => {
         <Text>Wrong e-mail or password.</Text>
       </Box>
 
-      <Text color="#25cf60" marginTop="15px" fontSize="14px">
-        Forgotten Password?
-      </Text>
+      <Link to="/forgotten_password">
+        <Text color="#25cf60" marginTop="15px" fontSize="14px" cursor="pointer">
+          Forgotten Password?
+        </Text>
+      </Link>
 
       <Box
         className={styles.loginbtn}
@@ -127,7 +129,10 @@ const LoginBox = () => {
           No account? Sign up
         </span>{" "}
         or
-        <span style={{ color: "#25cf60" }}> Log in with SSO</span>
+        <span style={{ color: "#25cf60", cursor: "pointer" }}>
+          {" "}
+          Log in with SSO
+        </span>
       </Text>
     </Box>
   );
