@@ -1,6 +1,7 @@
 import {
   Box,
   Button,
+  Center,
   Flex,
   Image,
   Input,
@@ -8,19 +9,24 @@ import {
   RadioGroup,
   Stack,
   Text,
+  useToast,
   Wrap,
   WrapItem,
 } from "@chakra-ui/react";
 import axios from "axios";
 import React, { useState } from "react";
+import { BsArrowLeftShort } from "react-icons/bs";
+import { NavLink, useNavigate } from "react-router-dom";
+
 import CountryDropDown from "./CountryDropDown";
 import styles from "./InvoiceInformation.module.css";
 
 const InvoiceInformation = () => {
   const [toggle, setToggle] = useState(false);
-
+  const [pay, setPay]=useState(false)
+ const toast=useToast()
   //  giving count to input to change price
-  let [count, setCount] = useState(localStorage.getItem("count") || 1);
+  let [count, setCount] = useState(localStorage.getItem("prices"));
    console.log(count)
   //    form input data
   const [voice, setVoice] =useState({
@@ -31,18 +37,38 @@ const InvoiceInformation = () => {
           postal:'',
           country:'',
   })
-
+  let prices=localStorage.getItem('prices')
+  let duration=localStorage.getItem('duration')
+  const navigate=useNavigate()
+  
+ 
   const handlePost=()=>{
-       axios('http://localhost:8080/invoice/post',{
-        method:"POST",
-        headers:{
-            "Content-Type":"application/json"
-        },
-        data:voice,
-       })
-       .then((res)=>res.data)
-       .catch((error)=>console.log(error))
+     if(voice.address==='' || voice.city==='' || voice.postal==='' || voice.name===''){
+      toast({
+        position: 'top',
+        title: "Can't left input empty",
+        description: "please fill all input with correct information.",
+        status: 'error',
+        duration: 9000,
+        isClosable: true,
+      })
   }
+  else{
+    axios('http://localhost:8080/invoice/post',{
+      method:"POST",
+      headers:{
+          "Content-Type":"application/json"
+      },
+      data:{...voice,price:prices,duration:duration}
+     })
+     .then((res)=>res.data)
+     .catch((error)=>console.log(error))
+      setTimeout(function(){
+           navigate('/payment')
+      },5000)
+      setPay(true)
+  }
+}
   
   const handleForm=(e)=>{
     let value=e.target.value
@@ -56,25 +82,19 @@ const InvoiceInformation = () => {
   console.log(voice)
 
 
-  // here initializing count to 1 before switching from month to year or vice versa
-  const handleRadio = () => {
-    count = 1;
-    setToggle(true);
-  };
-  const handleRadio2 = () => {
-    count = 1;
-    setToggle(false);
-  };
+  
   return (
-    
+    <>
+    <Box> { pay===true?<Box margin='auto' textAlign='center' width='50%'><Image textAlign={'center'} src='https://i.pinimg.com/originals/f8/c4/22/f8c422a0a0e6793b3f9113d419c5143a.gif'/></Box>:''}
+    </Box>
     <Box  className={styles.invoiceform} >
        
-      <Box  margin={'-5px 0px 0px 0px'}
+      {pay===false?<Box  margin={'-5px 0px 0px 0px'}
        padding={"60px"} >
         <Box >
           <form w={"100%"}>
-            <Box>
-              <a href="">Back to Your subscription</a>
+          <Box>
+              <NavLink to='/billing'><Flex><BsArrowLeftShort fontSize={"25px"}/><Text>Back to Your subscription</Text></Flex></NavLink>
             </Box>
             <Box m="20px 0px 0px 0px">
               <Text fontSize={"20px"} fontWeight="500">
@@ -191,9 +211,9 @@ const InvoiceInformation = () => {
             </Box>
           </form>
         </Box>
-      </Box>
-      
-      <Box>
+      </Box>:''}
+    
+      {pay===false?<Box>
         <Box className={styles.finalpayment}>
           <Box>
             <Text color={"#4f4f4f"} fontSize={"20px"} fontWeight="600">
@@ -228,29 +248,7 @@ const InvoiceInformation = () => {
               <Text>1 in use</Text>
             </Flex>
           </Box>
-          <Box
-            marginTop={"30px"}
-            display={"flex"}
-            justifyContent="space-between"
-          >
-            <Text>Billing cycle:</Text>
-            <Box>
-              <RadioGroup defaultValue={1}>
-                <Radio
-                  onChange={handleRadio}
-                  m={"0px 10px 0px 0px"}
-                  onClick={() => setToggle(true)}
-                  colorScheme="green"
-                  value="1"
-                >
-                  Annual
-                </Radio>
-                <Radio onChange={handleRadio2} colorScheme="green" value="2">
-                  Monthly
-                </Radio>
-              </RadioGroup>
-            </Box>
-          </Box>
+         
           <hr style={{ marginTop: "30px",height:'10px' }} />
           <Box
             marginTop={"30px"}
@@ -258,18 +256,13 @@ const InvoiceInformation = () => {
             justifyContent="space-between"
           >
             <Text>charge:</Text>
-            {toggle === false ? (
-              <Text color={"#4f4f4f"} fontSize={"20px"} fontWeight="600">
-                ${count * 7} per month
+             <Text color={"#4f4f4f"} fontSize={"20px"} fontWeight="600">
+                ${count} per {localStorage.getItem('duration')}
               </Text>
-            ) : (
-              <Text color={"#4f4f4f"} fontSize={"20px"} fontWeight="600">
-                ${(count * 75.6).toFixed(1)} per Year
-              </Text>
-            )}
+            
           </Box>
           <Button
-          onClick={handlePost}
+                    onClick={handlePost}
             color="white"
             backgroundColor={"#4bb063"}
             _hover={{ backgroundColor: "lightgreen" }}
@@ -285,9 +278,10 @@ const InvoiceInformation = () => {
             </Text>
           </Box>
         </Box>
-      </Box>
+      </Box> :''}
       
     </Box>
+    </>
   );
 };
 
