@@ -1,20 +1,64 @@
-import { Box, Button, Input, Popover, PopoverBody,Text, PopoverContent, PopoverTrigger, Select, Stack } from '@chakra-ui/react'
+import { Box, Button, Input,Image, Popover, PopoverBody,Text, PopoverContent, PopoverTrigger, Select, Stack, Heading } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
 import { BiFilterAlt } from 'react-icons/bi';
 import { BsThreeDots } from 'react-icons/bs';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+import { useDispatch,useSelector } from "react-redux/es/exports";
 import ProjectContainer from '../components/ProjectContainer';
+import AddProject from './AddProject';
+import Addtask from './Addtask';
+import { useEffect } from 'react';
+import { getProject } from '../store/project/action';
+import { createProject } from '../store/project/action';
 
 const Project = () => {
-
+  const [newProject, setNewProject] = useState("")
   const [addProject, setAddProject] = useState(false);
+  const [inputBox, setInputBox] = useState("");
+  const [projectId,setProjectId] = useState("");
+
+
+
+  console.log(inputBox);
+  const location = useLocation();
+  const dispatch = useDispatch();
+
+  const project = useSelector(state => state.project.project);
+  const {isLoading,isError} = useSelector(state => state.project.getProject);
+  // console.log(project);
+
+  const handleCreateProject = () => {
+    const payload = {
+      name:newProject
+    }
+    dispatch(createProject(payload))
+    .then((r) => {
+      console.log(r);
+      if(r.type == "ADD_PROJECT_SUCCESS"){
+        dispatch(getProject());
+      }
+    })
+  }
+
+
+  useEffect(() => {
+    dispatch(getProject())
+  },[])
+
 
   const handleAddProject = () => {
     setAddProject(true)
   }
-  return (
-    <>
-    <Box height={"24"} p="6" width="100%" border={"1px solid red"}  >
+
+
+
+
+  {
+    return (
+    isLoading ?  <Box width={"100%"} display={"flex"} justifyContent="center"><Image src="https://app.timecamp.com/res/css/images/loader.gif"/></Box> : isError ?  <Box><Heading>Something Went Wrong...</Heading></Box> : 
+    <>  
+    <Box height={"24"} p="6" width="100%"  >
       <Box display={"flex"} gap="15px" alignItems={"center"} >
         <Input focusBorderColor='#25cf60' border={"0.2px solid gray"} placeholder='Search' width={ addProject ? "280px" : "200px"} />
         { !addProject ? <Button onClick={handleAddProject} color={"aliceblue"} bgColor="#25cf60" _hover={{opacity:"0.7"}} >Add Project</Button> : null}
@@ -42,35 +86,46 @@ const Project = () => {
         </PopoverContent>
         </Popover>
       </Box>
-    </Box>
+    </Box> 
 
     {/* Project */}
-    <Box height={"86%"} border="1px solid blue" width="100%" display={"flex"}>
+    <Box height={"86%"} p="4" width="100%" display={"flex"}>
       
-      {/* Project Information box */}
-      <Box height={"100%"} width="60%" border="1px solid blue" >
-        { addProject ? <Box width={"100%"} height="20" p="6" border={"1px solid green"} display="flex" justifyContent="space-between" >
-          <Input type="text" fontSize={"15px"} focusBorderColor='#25cf60' border={"0.2px solid gray"} fontWeight="semibold" placeholder='Enter the name for new project or task...' width={"380px"} />
-          <Button color={"aliceblue"} bgColor="#25cf60" _hover={{opacity:"0.7"}}>Create new project</Button>
+      {/* create new  Project  box */}
+
+      <Box height={"100%"} width="60%" >
+        { addProject ? <Box width={"100%"} height="20" p="6"  display="flex" justifyContent="space-between" >
+          <Input type="text" onChange={(e) => setNewProject(e.target.value)} fontSize={"15px"} focusBorderColor='#25cf60' border={"0.2px solid gray"} fontWeight="semibold" placeholder='Enter the name for new project or task...' width={"380px"} />
+          <Button onClick={handleCreateProject} color={"aliceblue"} bgColor="#25cf60" _hover={{opacity:"0.7"}}>Create new project</Button>
           <Button variant={"outline"} fontWeight="normal" bgColor={"#fff"} onClick={() => setAddProject(false)} color="gray.600">Cancel</Button>
         </Box>
         : null
         }
 
         <Box height={"max-content"} width="95%" m="auto" borderRadius={"5px"} border={"0.5px solid gray"}>
-          <ProjectContainer/>
+          
+          {/* Todo Mapping of projects */}
+          {
+            project?.length > 0 && project.map((item) => {
+             return <ProjectContainer key={item._id} projectData={item} setProjectId={setProjectId} setInputBox={setInputBox}/>
+            })
+          }
+          
         </Box>
       </Box>
 
       {/* task Addition Box */}
-
-      <Box height={"100%"} width="40%" border="1px solid blue">
-
+      <Outlet/>
+       <Box height={"100%"} width="40%">
+       { inputBox == "Project" ? <AddProject  projectId={projectId}  setInputBox={() => setInputBox()}/> : inputBox == "Task" ? <Addtask setInputBox={() => setInputBox()}/> :<Box height={"32"} borderRadius="5px" width="100%" border={"0.5px solid gray"} display="flex" alignItems={"center"} justifyContent="center" >
+          <Text fontSize={"18px"} fontWeight="semibold" color={"gray.400"} >Choose project or task to edit</Text>
+        </Box>
+       }
       </Box>
     </Box>
-
     </>
   )
+  }
 }
 
 export default Project
