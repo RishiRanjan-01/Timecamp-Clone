@@ -12,10 +12,15 @@ import { BsTags } from "react-icons/bs";
 import { FiUsers } from "react-icons/fi";
 import { AiOutlineCheckSquare } from "react-icons/ai";
 import Reports from './Reports';
+import Computertime from './Computertime';
+import { useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 
-const MySidebar = ({setboxWidth}) => {
+const MySidebar = ({setboxWidth, currComp}) => {
     const [toggle, setToggle ] = useState(false);
-   
+
+    const navigate = useNavigate();
+
     const handleToggle = () => {
         setToggle(!toggle)
         setboxWidth();
@@ -34,9 +39,9 @@ const MySidebar = ({setboxWidth}) => {
 
         <Box height={"24"} width="100%" borderBottom={"1px solid grey"} alignContent="center" p="4">
             <Text fontSize={"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>TRACK</Text>
-            <Flex width={"80%"} mt={toggle ? "2" : "4"} justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
-                <BiTimeFive size={"25px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Timesheet</Text>}
+            <Flex onClick={ () => navigate("/") }  width={"80%"} mt={toggle ? "2" : "4"} justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+                <BiTimeFive size={"25px"} color={currComp == "TimeSheet" ? "#25cf60" : "gray"}/>
+                { toggle ? null : <Text fontSize={"15px"} color={currComp == "TimeSheet" ? "#25cf60" : "gray"} fontWeight="semibold" >Timesheet</Text>}
             </Flex>
         </Box>
 
@@ -44,19 +49,19 @@ const MySidebar = ({setboxWidth}) => {
 
         <Box height={"48"} width="100%" borderBottom={"1px solid grey"} alignContent="center" p="4">
             <Text fontSize={toggle ? "10px" :"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>ANALYZE</Text>
-            <Flex width={"80%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
-                <AiFillDashboard size={"25px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Dashboard</Text>}
+            <Flex width={"80%"} onClick={ () => navigate("/dashboard") }  mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+                <AiFillDashboard size={"25px"} color={currComp == "Dashboard" ? "#25cf60" : "gray"}/>
+                { toggle ? null : <Text fontSize={"15px"} color={currComp == "Dashboard" ? "#25cf60" : "gray"} fontWeight="semibold" >Dashboard</Text>}
             </Flex>
-            <Flex width={"88%"} mt= "2"  justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
-                <TbChartPie size={"25px"} color="gray"/>
-                { toggle ? null : <Reports/>}
-                {toggle ? null : <AiOutlineRight/>}
+            <Flex width={"88%"} mt= "2"  justifyContent="center" height={"40px"} alignItems={"center"} gap={"20px"}>
+                {/* <TbChartPie size={"25px"} color="gray"/> */}
+                { toggle ? <TbChartPie size={"25px"} color="gray"/> : <Reports toggle={toggle}/>}
+                {/* {toggle ? null : <AiOutlineRight/>} */}
             </Flex>
             <Flex width={"100%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"10px"}>
-                <GrPersonalComputer size={"23px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Computer Time</Text>}
-                {toggle ? null : <AiOutlineRight/>}
+                {/* <GrPersonalComputer size={"23px"} color="gray"/> */}
+                { toggle ? <GrPersonalComputer size={"23px"} color="gray"/> : <Computertime/>}
+                {/* {toggle ? null : <AiOutlineRight/>} */}
             </Flex>
         </Box>
 
@@ -64,13 +69,13 @@ const MySidebar = ({setboxWidth}) => {
 
         <Box height={"36"} width="100%" borderBottom={"1px solid grey"} alignContent="center" p="4">
             <Text fontSize={ toggle ? "10px" :"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>MANAGE</Text>
-            <Flex width={"70%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
-                <BsFolder2Open size={"25px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Projects</Text>}
+            <Flex width={"70%"} mt="2" onClick={ () => navigate("/projects") } justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+                <BsFolder2Open size={"25px"} color={currComp == "Projects" ? "#25cf60" : "gray"}/>
+                { toggle ? null : <Text fontSize={"15px"} color={currComp == "Projects" ? "#25cf60" : "gray"} fontWeight="semibold" >Projects</Text>}
             </Flex>
-            <Flex width={"80%"} mt="2"  justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
-                <BsTags size={"25px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Timesheet</Text>}
+            <Flex width={"60%"} justifyContent="center" onClick={ () => navigate("/tags") } mt="2" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+                <BsTags size={"25px"} color={currComp == "Tags" ? "#25cf60" : "gray"}/>
+                { toggle ? null : <Text fontSize={"15px"} color={currComp == "Tags" ? "#25cf60" : "gray"} fontWeight="semibold" >Tags</Text>}
             </Flex>
         </Box>
 
@@ -78,9 +83,9 @@ const MySidebar = ({setboxWidth}) => {
 
         <Box height={"36"} width="100%" alignContent="center" p="4">
             <Text fontSize={"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>TEAM</Text>
-            <Flex width={"70%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
-                <FiUsers size={"25px"} color="gray"/>
-                { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Users</Text>}
+            <Flex width={"70%"} mt="2" onClick={ () => navigate("/user") } justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+                <FiUsers size={"25px"} color={currComp == "Users" ? "#25cf60" : "gray"}/>
+                { toggle ? null : <Text fontSize={"15px"} color={currComp == "Users" ? "#25cf60" : "gray"} fontWeight="semibold" >Users</Text>}
             </Flex>
             <Flex width={"85%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <AiOutlineCheckSquare size={"25px"} color="gray"/>
