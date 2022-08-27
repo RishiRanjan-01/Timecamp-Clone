@@ -1,71 +1,39 @@
 import { Box, Button, Image, Text } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { FiChrome } from "react-icons/fi";
+import Companies from "./Companies";
+import styles from "./Login.module.css";
 
 const LeftSection = () => {
+  const [width, setWidth] = useState(window.innerWidth);
+  const breakpoint = 990;
+
+  useEffect(() => {
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+  }, []);
   return (
-    <Box
-      boxSizing="borderbox"
-      paddingLeft="60px"
-      width="51%"
-    >
-      <Text fontSize="5xl" w="75%" fontWeight="700" marginTop="50px">
+    <Box className={styles.leftbox}>
+      <Text className={styles.leftheading}>
         TimeCamp Plugin for Google Chrome
       </Text>
 
-      <Text
-        fontSize="2xl"
-        marginTop="10px"
-        w="60%"
-        fontWeight="700"
-        color="#767676"
-      >
+      <Text className={styles.subheading}>
         Track time without leaving Chrome in 70+ online apps.
       </Text>
 
-      <Button
+      <Box
+        className={styles.addchromebtn}
         _hover={{ backgroundColor: "#25cf60" }}
-        marginTop="15px"
-        borderRadius="25px"
-        padding="25px 50px 25px 50px"
         backgroundColor="#25cf60"
         color="white"
       >
-        <FiChrome fontWeight="lighter" fontSize="30px" />
-        <Text marginLeft="10px" fontWeight="lighter" fontSize="14px">
-          Add TimeCamp for Chrome
-        </Text>
-      </Button>
-
-      <Box marginTop="30px"  display="flex" alignItems="center" gap="25px">
-        <Image
-          w="94px"
-          h="50px"
-          src="https://cdn.timecamp.com/res/css/images/crozdesk-icon.1661509647.png"
-          alt="logo"
-        />
-
-        <Image
-          w="94px"
-          h="50px"
-          src="https://cdn.timecamp.com/res/css/images/capterra-icon.1661509647.png"
-          alt="logo"
-        />
-
-        <Image
-          w="94px"
-          h="50px"
-          src="https://cdn.timecamp.com/res/css/images/crowd-icon.1661509647.png"
-          alt="logo"
-        />
-
-        <Image
-          w="94px"
-          h="50px"
-          src="https://cdn.timecamp.com/res/css/images/get-app-icon.1661509647.png"
-          alt="logo"
-        />
+        <FiChrome className={styles.chromelogo} />
+        <Text className={styles.btntext}>Add TimeCamp for Chrome</Text>
       </Box>
+
+      <div hidden={width > breakpoint ? false : true}>
+        <Companies />
+      </div>
     </Box>
   );
 };

@@ -25,12 +25,7 @@ const LoginBox = () => {
   };
 
   const handlegoogleauth = () => {
-
-  axios({
-    method: "get",
-    url: "http://localhost:8000/auth/google",
-  }).then((res) => console.log(res.data.token));
-  
+     window.open("http://localhost:8000/auth/google");
   };
 
   const handlesignup = () => {
@@ -39,22 +34,10 @@ const LoginBox = () => {
 
   return (
     <Box className={styles.logindiv}>
-      <Text fontSize="2xl" fontWeight="700" paddingTop="40px">
-        Log into TimeCamp
-      </Text>
+      <Text className={styles.loginheading}>Log in to TimeCamp</Text>
 
       <Box
-        width="75%"
-        margin="auto"
-        height="40px"
-        border="1px solid silver"
-        borderRadius="8px"
-        display="flex"
-        justifyContent="center"
-        alignItems="center"
-        gap="30px"
-        marginTop="50px"
-        cursor="pointer"
+        className={styles.googlebtn}
         _hover={{ backgroundColor: "gray.100" }}
         onClick={() => handlegoogleauth()}
       >
@@ -88,19 +71,14 @@ const LoginBox = () => {
         Forgotten Password?
       </Text>
 
-      <Button
-        marginTop="20px"
-        borderRadius="25px"
-        padding="25px 35px 25px 35px"
-        fontSize="15px"
-        color="white"
-        fontWeight="lighter"
+      <Box
+        className={styles.loginbtn}
         backgroundColor="#25cf60"
         _hover={{ backgroundColor: "#25cf60" }}
         onClick={() => handlesubmit()}
       >
         Log in
-      </Button>
+      </Box>
 
       <Text
         color="gray"

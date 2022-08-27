@@ -13,6 +13,7 @@ const Signuppage = () => {
     const passwordref = useRef();
     const phoneref = useRef();
   const [flag, setFlag] = useState("");
+
     const navigate = useNavigate();
 
     const handlesubmit = () => {
@@ -35,45 +36,31 @@ const Signuppage = () => {
       }
     }, [flag]);
 
+     const handlegoogleauth = () => {
+       window.open("http://localhost:8000/auth/google");
+     };
+
   return (
     <div style={{ paddingBottom: "20px" }}>
       <Navbar />
 
       <Box className={styles.signupdiv}>
-        <Text fontSize="4xl" fontWeight="700" paddingTop="40px">
-          Start tracking time
-        </Text>
+        <Text className={styles.heading}>Start tracking time</Text>
 
-        <Text
-          fontSize="2xl"
-          w="70%"
-          color="#8f7e77"
-          fontWeight="700"
-          margin="auto"
-          marginTop="20px"
-        >
+        <Text className={styles.subheading}>
           Create an account and start with a free 14-day trial
         </Text>
-        <Text fontSize="16px" fontWeight="500" color="#767676" marginTop="15px">
+        <Text className={styles.subsubheading}>
           All features. No credit card required
         </Text>
 
         <Box
-          width="75%"
-          margin="auto"
-          height="40px"
-          border="1px solid silver"
-          borderRadius="8px"
-          display="flex"
-          justifyContent="center"
-          alignItems="center"
-          gap="30px"
-          marginTop="20px"
-          cursor="pointer"
+          className={styles.googlebtn}
           _hover={{ backgroundColor: "gray.100" }}
+          onClick={() => handlegoogleauth()}
         >
-          <FcGoogle fontSize="30px" />
-          <Text fontSize="14px" fontWeight="700" color="#8f7e77">
+          <FcGoogle className={styles.googlelogo} />
+          <Text className={styles.googletext} color="#8f7e77">
             Sign up with Google
           </Text>
         </Box>
@@ -82,55 +69,59 @@ const Signuppage = () => {
           Or
         </Text>
 
-        <Box margin="auto" width="75%" marginTop="20px">
+        <Box className={styles.inputdiv}>
           <Input
             ref={emailref}
             focusBorderColor="#25cf60"
-            placeholder="email"
+            placeholder="Email"
             type="email"
+            fontWeight="lighter"
+            fontSize="14px"
           />
           <Input
             ref={passwordref}
             focusBorderColor="#25cf60"
-            placeholder="password"
+            placeholder="Password"
             type="password"
             marginTop="15px"
+            fontWeight="lighter"
+            fontSize="14px"
           />
           <Input
             ref={phoneref}
             focusBorderColor="#25cf60"
-            placeholder="phone (optional)"
+            placeholder="Phone (optional)"
             type="phone"
             maxLength="10"
             marginTop="15px"
+            fontWeight="lighter"
+            fontSize="14px"
           />
         </Box>
 
         <Button
+          backgroundColor="#25cf60"
           marginTop="40px"
-          borderRadius="25px"
           padding="25px 35px 25px 35px"
+          borderRadius="25px"
           fontSize="15px"
           color="white"
           fontWeight="700"
-          backgroundColor="#25cf60"
           _hover={{ backgroundColor: "#25cf60" }}
           onClick={() => handlesubmit()}
         >
           Sign up for free
         </Button>
 
-        <Text
-          color="gray"
-          fontSize="14px"
-          width="65%"
-          textAlign="left"
-          margin="auto"
-          marginTop="20px"
-        >
+        <Text className={styles.note}>
           By signing up you agree to our{" "}
-          <span style={{ color: "#25cf60" }}>Terms of Service</span> and{" "}
-          <span style={{ color: "#25cf60" }}>Privacy Policy</span>
+          <a href="https://www.timecamp.com/terms-conditions/">
+            <span style={{ color: "#25cf60" }}>Terms of Service</span>{" "}
+          </a>{" "}
+          and{" "}
+          <a href="https://www.timecamp.com/privacy-policy/">
+            <span style={{ color: "#25cf60" }}>Privacy Policy</span>
+          </a>
         </Text>
       </Box>
     </div>

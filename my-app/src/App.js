@@ -19,18 +19,17 @@ import Signuppage from './Signup/Signuppage';
 function App() {
   return (
     <div className="App">
-      <InvoiceInformation/>
-     <InvoiceRouter/>
-     <HomePage/>
+      {/* <InvoiceInformation/>
+     <InvoiceRouter/>*/}
+
       <Routes>
+        <Route path="/" element={<HomePage />}></Route>
         <Route path="/signuppage" element={<Signuppage />}></Route>
-      </Routes>
-      <Routes>
         <Route path="/loginpage" element={<Loginpage />}></Route>
       </Routes>
-      <Tabbs/>
-     <Billing/>
-    </>
+      {/*<Tabbs />
+      <Billing />*/}
+    </div>
   );
 }
 
