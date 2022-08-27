@@ -12,7 +12,9 @@ const Signuppage = () => {
     const emailref = useRef();
     const passwordref = useRef();
     const phoneref = useRef();
-  const [flag, setFlag] = useState("");
+    const [flag, setFlag] = useState("");
+    const [signupflag, setSignupflag] = useState(true);
+    
 
     const navigate = useNavigate();
 
@@ -23,20 +25,27 @@ const Signuppage = () => {
           "phone": phoneref.current.value,
         };
 
+        let result;
+
         axios({
           method: "post",
           url: "http://localhost:8000/user/register",
           data: usercreds,
-        }).then((res) => setFlag(res.data));
+        }).then((res) => (setFlag(res.data),result=res.data));
+
+        if (result !== "Signup Successfull") {
+          setSignupflag(false);
+        }
     }
 
     useEffect(() => {
       if (flag === "Signup Successfull") {
-        navigate("/loginpage", { replace: true });
+        navigate("/", { replace: true });
       }
     }, [flag]);
 
      const handlegoogleauth = () => {
+      localStorage.setItem("google",true);
        window.open("http://localhost:8000/auth/google");
      };
 
@@ -68,6 +77,28 @@ const Signuppage = () => {
         <Text marginTop="20px" fontSize="14px">
           Or
         </Text>
+
+        <Box
+          hidden={signupflag === true ? true : false}
+          backgroundColor="#f2dede"
+          border="1px solid #f2dede"
+          color="brown"
+          margin="auto"
+          marginTop="15px"
+          borderRadius="10px"
+          width="75%"
+          height="70px"
+          display="flex"
+          alignItems="center"
+          justifyContent="center"
+          fontSize="14px"
+        >
+          <Text width="90%" textAlign="justify" >
+            {flag === "User Already Exists"
+              ? "This e-mail is already in use."
+              : "Invalid Credentials. Password must have greater than 8 characters, contain special character and a number."}
+          </Text>
+        </Box>
 
         <Box className={styles.inputdiv}>
           <Input

@@ -1,15 +1,21 @@
 import { Box, Button, Input, Text } from "@chakra-ui/react";
 import axios from "axios";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import Navbar from "./Navbar";
 import styles from "./Login.module.css";
 import { FcGoogle } from "react-icons/fc";
 import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
 
 const LoginBox = () => {
   const emailref = useRef();
   const passwordref = useRef();
   const navigate = useNavigate();
+
+  const [flag, setFlag] = useState("Login Successfull");
+
+  const [routeflag, setRouteflag] = useState(false);
+
   const handlesubmit = () => {
     let usercreds = {
       email: emailref.current.value,
@@ -21,16 +27,23 @@ const LoginBox = () => {
       url: "http://localhost:8000/user/login",
       data: usercreds,
       
-    }).then((res) => localStorage.setItem("token", res.data.token));
+    }).then((res) => (localStorage.setItem("token", res.data.token),setFlag(res.data.message),setRouteflag(res.data.message)));
   };
 
   const handlegoogleauth = () => {
+    localStorage.setItem("google", true);
      window.open("http://localhost:8000/auth/google");
   };
 
   const handlesignup = () => {
     navigate("/signuppage", { replace: true });
   };
+
+  useEffect(() => {
+    if (routeflag === "Login Successfull") {
+      navigate("/", { replace: true });
+    }
+  }, [routeflag]);
 
   return (
     <Box className={styles.logindiv}>
@@ -67,6 +80,24 @@ const LoginBox = () => {
         />
       </Box>
 
+      <Box
+        hidden={flag === "Login Successfull" ? true : false}
+        backgroundColor="#f2dede"
+        border="1px solid #f2dede"
+        color="brown"
+        margin="auto"
+        marginTop="15px"
+        borderRadius="10px"
+        width="75%"
+        height="50px"
+        display="flex"
+        alignItems="center"
+        justifyContent="center"
+        fontSize="14px"
+      >
+        <Text>Wrong e-mail or password.</Text>
+      </Box>
+
       <Text color="#25cf60" marginTop="15px" fontSize="14px">
         Forgotten Password?
       </Text>
@@ -74,6 +105,7 @@ const LoginBox = () => {
       <Box
         className={styles.loginbtn}
         backgroundColor="#25cf60"
+        cursor="pointer"
         _hover={{ backgroundColor: "#25cf60" }}
         onClick={() => handlesubmit()}
       >

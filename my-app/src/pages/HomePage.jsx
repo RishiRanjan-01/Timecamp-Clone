@@ -82,13 +82,13 @@ const HomePage = () => {
 
   // related to google auth
       useEffect(() => {
-        if (!userdata) {
+        if (localStorage.getItem("google")) {
           axios
             .get("http://localhost:8000/googleuser")
             .then((res) => setUserdata(res.data));
         }
       }, []);
-
+      
       useEffect(() => {
         if(userdata){
           localStorage.setItem("token",userdata.token);
