@@ -13,7 +13,7 @@ const Billing = () => {
   const [toggle, setToggle] = useState("C");
 
   return (
-    <Box>
+    <Box padding={'5px 0px 0px 20px'}>
       <Box>
         <Center
           border={"1px solid  lightgrey"}

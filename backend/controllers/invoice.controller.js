@@ -14,10 +14,10 @@ InvoiceController.get('/',async(req,res)=>{
 })
 
 InvoiceController.post('/post',async (req,res)=>{
-      const {name,invoice,address,city,postal,country}=req.body
+      const {name,invoice,address,city,postal,country,price,duration}=req.body
           
            
-      const postInvoice= await InvoiceModel({name,invoice,address,city,postal,country})
+      const postInvoice= await InvoiceModel({name,invoice,address,city,postal,country,price,duration})
         postInvoice.save()
         res.send("data posted successfully")
 })

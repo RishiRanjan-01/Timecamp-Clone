@@ -6,7 +6,9 @@ const InvoiceSchema = new mongoose.Schema({
   address: { type: String ,required:true },
   city:{type:String, required:true},
   postal:{type:Number,required:true},
-  country:{type:String}
+  country:{type:String},
+  price:Number,
+  duration:String,
 });
 
 const InvoiceModel = mongoose.model("invoice", InvoiceSchema);
