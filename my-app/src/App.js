@@ -23,23 +23,19 @@ import PaymentCard from './Sandeep/payment/PaymentCard';
 
 function App() {
   return (
-    <div className="App">
+    <>
+      <Routes>
+        <Route path="/" element={<HomePage />}></Route>
 
       {/* <InvoiceInformation/> */}
-   
-      {/*<Tabbs/>*/}
-      {/* <Tabbs/>
-     <Billing/> */}
      {/* <HomePage/> */}
-
       <InvoiceInformation/>
      
      <HomePage/>
       <Routes>
 
+
         <Route path="/signuppage" element={<Signuppage />}></Route>
-      </Routes>
-      <Routes>
         <Route path="/loginpage" element={<Loginpage />}></Route>
 
       </Routes> */}
@@ -47,17 +43,16 @@ function App() {
       <InvoiceRouter/>
         
         {/* <MySidebar/> */ }
-        {/* <PaymentCard/> */}
-        
+        {/* <PaymentCard/> */}   
         {/* <BillingAddress/> */}
      
     </div>
 
       </Routes>
+    </div>
       <Tabbs/>
      <Billing/>
     </>
-
   );
 }
 

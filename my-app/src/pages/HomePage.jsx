@@ -38,6 +38,7 @@ import { useEffect } from "react";
 import Project from "./Project";
 import User from "./User";
 import Tags from "./Tags";
+import axios from "axios";
 
 // import Reports from '../components/Reports';
 
@@ -45,6 +46,9 @@ const HomePage = () => {
   const [toggle, setToggle] = useState(false);
 
   const [currComp, setCurrComp] = useState("Timesheet");
+
+  // related to googleauth
+  const [userdata, setUserdata] = useState("");
 
   const location = useLocation();
 
@@ -76,6 +80,21 @@ const HomePage = () => {
     setToggle(!toggle);
   };
 
+  // related to google auth
+      useEffect(() => {
+        if (localStorage.getItem("google")) {
+          axios
+            .get("http://localhost:8000/googleuser")
+            .then((res) => setUserdata(res.data));
+        }
+      }, []);
+      
+      useEffect(() => {
+        if(userdata){
+          localStorage.setItem("token",userdata.token);
+        }
+      },[userdata])
+    // relared to google auth ended here
   return (
     <Box height={"100vh"} width="100" display="flex">
       <MySidebar setboxWidth={handleToogle} currComp={currComp} />
