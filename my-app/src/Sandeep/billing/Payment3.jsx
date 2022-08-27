@@ -12,6 +12,7 @@ import {
 } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import styles from "./Billing.module.css";
 const Payment3 = () => {
   const [toggle, setToggle] = useState(false);
@@ -30,10 +31,23 @@ const Payment3 = () => {
     localStorage.setItem("count", count);
     console.log(count)
   };
-
+  const navigate=useNavigate()
   const handlePayment=()=>{
+    if(toggle===true){
+        let price=count*108
+        let duration="year"
+        localStorage.setItem('prices',price)
+        localStorage.setItem('duration',duration)
+      }
+      else{
+        let duration='month'
+        let price=count*10
+        localStorage.setItem('prices',price)
+        localStorage.setItem('duration',duration)
+      }
       let pro="pro"
          localStorage.setItem('pro',pro)
+         navigate('/subscription')
   }
   return (
     <Box className={styles.leftboxdetail}>
@@ -111,7 +125,7 @@ const Payment3 = () => {
         </Box>
         <Box marginTop={"30px"} display={"flex"} justifyContent="space-between">
           <Text>Plan:</Text>
-          <Text>Basic</Text>
+          <Text>Pro</Text>
         </Box>
         <Box marginTop={"30px"} display={"flex"} justifyContent="space-between">
           <Text>Billing cycle:</Text>

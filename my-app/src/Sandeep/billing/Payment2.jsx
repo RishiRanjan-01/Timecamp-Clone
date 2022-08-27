@@ -13,6 +13,7 @@ import {
 import React from "react";
 import { useState } from "react";
 import { AiOutlineCheck} from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
 import styles from "./Billing.module.css";
 const Payment2 = () => {
     //toggling year and month
@@ -37,11 +38,25 @@ const Payment2 = () => {
     count = 1;
     setToggle(false)
   };
-
+   
+  const navigate=useNavigate()
   const handlePayment=()=>{
     let pro="basic"
-    
+          if(toggle===true){
+            let price=(count*75.6).toFixed(1)
+            let duration="year"
+            localStorage.setItem('prices',price)
+            localStorage.setItem('duration',duration)
+          }
+          else{
+            let duration='month'
+            let price=count*7
+            localStorage.setItem('prices',price)
+            localStorage.setItem('duration',duration)
+          }
+       
        localStorage.setItem('pro',pro)
+       navigate('/subscription')
     
 }
   return (
