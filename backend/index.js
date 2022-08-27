@@ -19,17 +19,20 @@ const authentication = require("./middlewares/authentication")
 
 
 //   Sandeep imports
-const Invoiceconnection=require('./config/siddb')
-const InvoiceController=require('./controllers/invoice.controller')
+// const Invoiceconnection=require('./config/siddb')
+// const InvoiceController=require('./controllers/invoice.controller')
 
 const app = express();
 
-// app.use(session({ secret: "keyboard cat" }));
-// app.use(passport.initialize());
-// app.use(passport.session());
+app.use(session({ secret: "keyboard cat" }));
+app.use(passport.initialize());
+app.use(passport.session());
 
-// app.use(cors());
+ app.use(cors());
 app.use(express.json());
+
+
+app.use("/user", userroute);
 
 
 app.use("/user", userroute);
@@ -64,6 +67,7 @@ app.use("/project",authentication,projectController)
 // });
 
 // app.use("/user", userroute);
+
 
 const authenticated = (req, res, next) => {
   next();
@@ -100,6 +104,8 @@ app.get("/googleuser", authenticated, (req, res) => {
 
 
 
+
+
 // app.get(
 //   "/auth/google",
 //   passport.authenticate("google", { scope: ["profile", "email"] })
@@ -131,8 +137,8 @@ app.get("/googleuser", authenticated, (req, res) => {
 
 
 {
-  /* Sandeep  routes*/
-}
+  /* Sandeep  routes
+
 
 app.use('/invoice',InvoiceController)
 
@@ -145,4 +151,4 @@ app.listen(process.env.PORT, async () => {
   }
 
   console.log("server started");
-});
+})*/}
