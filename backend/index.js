@@ -1,12 +1,22 @@
 const express = require("express");
 require("dotenv").config();
- const cors = require("cors");
- var jwt = require("jsonwebtoken");
- const session = require("express-session");
+const cors = require("cors");
+var jwt = require("jsonwebtoken");
+// const session = require("express-session");
 
+// const passport = require("./config/googleauth");
+// const userroute = require("./controllers/user.controller");
+const connection = require("./config/db");
+const userroute = require("./controllers/user.controller");
+const projectController = require("./controllers/project.controller");
+const authentication = require("./middlewares/authentication")
+
+
+ const session = require("express-session");
  const passport = require("./config/googleauth");
- const userroute = require("./controllers/user.controller");
- const connection = require("./config/db");
+
+
+
 
 //   Sandeep imports
 const Invoiceconnection=require('./config/siddb')
@@ -20,6 +30,38 @@ const app = express();
 
 // app.use(cors());
 app.use(express.json());
+
+
+app.use("/user", userroute);
+app.use("/project",authentication,projectController)
+
+// app.get(
+//   "/auth/google",  
+//   passport.authenticate("google", { scope: ["profile", "email"] })
+// );
+
+// app.get(
+//   "/auth/google/callback",
+//   passport.authenticate("google", { failureRedirect: "/login" }),
+//   function (req, res) {
+//     // Successful authentication, redirect home.
+//     res.redirect("/");
+//   }
+// );
+
+// app.get("/", (req, res) => {
+//   const { email, name, picture, sub } = req.user._json;
+//   console.log(req.user._json);
+//   const token = jwt.sign({ email: email, userId: sub }, process.env.secret);
+
+//   res.send({
+//     email: email,
+//     name: name,
+//     profile_pic: picture,
+//     message: "Login Successfull",
+//     token,
+//   });
+// });
 
 // app.use("/user", userroute);
 
@@ -55,6 +97,7 @@ app.get("/googleuser", authenticated, (req, res) => {
     token,
   });
 });
+
 
 
 // app.get(

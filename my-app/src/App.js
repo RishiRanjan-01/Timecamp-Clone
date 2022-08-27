@@ -6,6 +6,12 @@ import HomePage from './pages/HomePage';
 // import InvoiceInformation from './Sandeep/invoice/InvoiceInformation';
 // import Tabbs from './Sandeep/tabs/Tabs';
 // import Signuppage from './Signup/Signuppage';
+
+
+// import ShowInvoice from './Sandeep/invoice/ShowInvoice';
+// import InvoiceRouter from './Sandeep/sRouter/InvoiceRouter';
+
+
 import { Route, Routes } from 'react-router-dom';
 import Loginpage from './Login/Loginpage';
 import Billing from './Sandeep/billing/Billing';
@@ -21,9 +27,16 @@ import { GrAid } from 'react-icons/gr';
 import PaymentCard from './Sandeep/payment/PaymentCard';
 
 
+
 function App() {
   return (
     <>
+
+      {/* <InvoiceInformation/>
+     <InvoiceRouter/> */}
+     <HomePage/>
+      {/* <Routes>
+
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
 
@@ -51,7 +64,8 @@ function App() {
       </Routes>
     </div>
       <Tabbs/>
-     <Billing/>
+     <Billing/> */}
+
     </>
   );
 }
