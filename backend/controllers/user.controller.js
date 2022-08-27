@@ -7,7 +7,7 @@ const emailvalidator = require("../middlewares/emailvalidator");
 const passwordvalidator = require("../middlewares/passwordvalidator");
 const UserModel = require("../models/User.model");
 
-const userroute = express.Router()
+const userroute = express.Router();
 const saltRounds = Number(process.env.SALT);
 
 userroute.use(validator, emailvalidator);
@@ -15,10 +15,9 @@ userroute.use(validator, emailvalidator);
 userroute.post("/register", passwordvalidator, async (req, res) => {
   const { email, password, phone } = req.body;
 
-  const user = await UserModel.findOne({ email:email });
+  const user = await UserModel.findOne({ email: email });
 
   if (user) {
-    console.log(user)
     return res.send("User Already Exists");
   }
 
@@ -37,10 +36,19 @@ userroute.post("/login", async (req, res) => {
   const user = await UserModel.findOne({ email });
 
   if (user) {
-    const token = jwt.sign({ email:email, userId:user._id }, process.env.secret);
-     res.send({ message: "Login Successfull", token });
+    bcrypt.compare(password, user.password).then(function (result) {
+      if (result) {
+        const token = jwt.sign(
+          { email: email, userId: user._id },
+          process.env.secret
+        );
+       return res.send({ message: "Login Successfull", token });
+      }else{
+         res.send("Invalid Credentials");
+      }
+    });
   } else {
-    return res.send("Invalid Credentials");
+    return ;
   }
 });
 

@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Image, Text } from "@chakra-ui/react";
 import { useNavigate } from "react-router-dom";
+import styles from "./signup.module.css";
 
 const Navbar = () => {
     const navigate = useNavigate();
@@ -11,22 +12,15 @@ const Navbar = () => {
 
   return (
     <Box
+      className={styles.navbardiv}
       boxShadow="rgba(0, 0, 0, 0.24) 0px 3px 8px"
-      w="100%"
       h="80px"
       p={4}
       color="white"
     >
-      <Box
-        display="flex"
-        justifyContent="space-between"
-        alignItems="center"
-        w="95%"
-        margin="auto"
-      >
+      <div className={styles.navbarcontent}>
         <Image
-          w="140px"
-          h="40px"
+          className={styles.navbarlogo}
           src="https://cdn.timecamp.com/res/css/images/greenbranding/TC-logo.1661423136.svg"
           alt="logo"
         />
@@ -40,7 +34,7 @@ const Navbar = () => {
         >
           Log in
         </Text>
-      </Box>
+      </div>
     </Box>
   );
 }

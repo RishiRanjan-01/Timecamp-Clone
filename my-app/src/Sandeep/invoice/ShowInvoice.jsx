@@ -105,8 +105,8 @@ const ShowInvoice = () => {
               <Td>{invoice.name}</Td>
               <Td>{invoice.city}</Td>
               <Td>{invoice.postal}</Td>
-              <Td>one Year</Td>
-              <Td>$100</Td>
+              <Td>{invoice.duration}</Td>
+              <Td>${invoice.price}</Td>
             </Tr>
           ))}
       </Table>
