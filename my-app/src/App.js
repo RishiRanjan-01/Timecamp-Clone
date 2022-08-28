@@ -34,12 +34,12 @@ function App() {
   return (
     <>
 
-    {/* Needed */}
+    {/* Needed  */}
 
 
       {/* <InvoiceInformation/>
      <InvoiceRouter/> */}
-     <HomePage/>
+     {/* <HomePage/> */}
       {/* <Routes>
 
 
@@ -53,9 +53,9 @@ function App() {
 
       {/* Needed */}
 
-    </div>
-      <Tabbs/>
-     <Billing/> */}
+    {/* </div> */}
+      {/* <Tabbs/> */}
+     {/* <Billing/> */}
 
 
     </>

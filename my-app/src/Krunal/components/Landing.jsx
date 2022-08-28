@@ -9,7 +9,7 @@ import Integrations from "./Integrations"
 import Tab from "./Tab"
 import SSL from "./SSl"
 import Faq from "./FAQ/Faq"
-import Blog from "./BLOG/Blog"
+import Blog from "./Blog"
 import Footer from "./Footer"
 import Bottom from './Bottom'
 const Landing = () => {

@@ -18,11 +18,11 @@ const AccordinationItem = () => {
           <AccordionButton>
             <Box display="flex" alignItems='center' gap='5'>
                 {isExpanded ? (
-              <MinusIcon fontSize='12px' />
+              <MinusIcon fontSize='12px' color='grey' />
             ) : (
-              <AddIcon fontSize='12px' />
+              <AddIcon fontSize='12px' color='grey'/>
             )}
-                <Text>What is time tracker?</Text>
+                <Text py='3' fontWeight='bold' fontSize='20'>What is time tracker?</Text>
               
             </Box>
             
@@ -46,11 +46,11 @@ const AccordinationItem = () => {
           <AccordionButton>
             <Box display="flex" alignItems='center' gap='5'>
                 {isExpanded ? (
-              <MinusIcon fontSize='12px' />
+              <MinusIcon fontSize='12px' color='grey' />
             ) : (
-              <AddIcon fontSize='12px' />
+              <AddIcon fontSize='12px' color='grey' />
             )}
-                <Text>Why use time tracker?</Text>
+                <Text py='3' fontWeight='bold' fontSize='20'>Why use time tracker?</Text>
               
             </Box>
             
@@ -80,11 +80,11 @@ const AccordinationItem = () => {
           <AccordionButton>
             <Box display="flex" alignItems='center' gap='5'>
                 {isExpanded ? (
-              <MinusIcon fontSize='12px' />
+              <MinusIcon fontSize='12px'  color='grey'/>
             ) : (
-              <AddIcon fontSize='12px' />
+              <AddIcon fontSize='12px' color='grey' />
             )}
-                <Text>What are the benefits of time tracking?</Text>
+                <Text py='3' fontWeight='bold' fontSize='20'>What are the benefits of time tracking?</Text>
               
             </Box>
             
@@ -115,11 +115,11 @@ const AccordinationItem = () => {
           <AccordionButton>
             <Box display="flex" alignItems='center' gap='5'>
                 {isExpanded ? (
-              <MinusIcon fontSize='12px' />
+              <MinusIcon fontSize='12px' color='grey'/>
             ) : (
-              <AddIcon fontSize='12px' />
+              <AddIcon fontSize='12px' color='grey'/>
             )}
-                <Text>How to bill clients on hourly work?</Text>
+                <Text py='3' fontWeight='bold' fontSize='20'>How to bill clients on hourly work?</Text>
               
             </Box>
             
@@ -141,11 +141,11 @@ const AccordinationItem = () => {
           <AccordionButton>
             <Box display="flex" alignItems='center' gap='5'>
                 {isExpanded ? (
-              <MinusIcon fontSize='12px' />
+              <MinusIcon fontSize='12px' color='grey'/>
             ) : (
-              <AddIcon fontSize='12px' />
+              <AddIcon fontSize='12px' color='grey'/>
             )}
-                <Text>How to save time on timesheets?</Text>
+                <Text py='3' fontWeight='bold' fontSize='20'>How to save time on timesheets?</Text>
               
             </Box>
             

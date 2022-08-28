@@ -7,7 +7,7 @@ import {
 
 const Upnav = () => {
   return (
-    <Box bgColor='green' color='white' textAlign='center' p='3'>
+    <Box bgColor='#25cf60' color='white' textAlign='center' p='3'>
         <Text>Want to become a Reseller, Affiliate, or Integration Partner? We are recruiting for our new Partner Programs. <b>Learn more and apply here ➡️.</b></Text>
     </Box>
   )

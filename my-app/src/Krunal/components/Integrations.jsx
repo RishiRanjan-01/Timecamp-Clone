@@ -31,16 +31,16 @@ const Integrations = () => {
           
           <Stack px={{base:3,md:'0'}}>
 
-           <Text my='5' color='green' fontWeight='500'>TIME TRACKING INTEGRATIONS</Text>
+           <Text my='5' color='#25cf60' fontWeight='500'>TIME TRACKING INTEGRATIONS</Text>
 
            <Heading>Easy and quick integration with more than 100 apps and work tools</Heading>
             <Text  my='5'><b>TimeCamp works great</b> alongside with all of the most popular work management tools.</Text>
             <Text  my='5'>Now, you can also <b>track time</b> directly from your go-to apps such as Trello or Asana thanks to our Chrome extension.</Text>
-            <Box  w='250px' py='4' borderRadius='30' textAlign='center'  bgColor='green' color='white'> Track time in Chrome</Box>
+            <Box  w='250px' py='4' borderRadius='30' textAlign='center'  bgColor='#25cf60' color='white'> Track time in Chrome</Box>
             
             <Text >Maintain your current workflow and <b>connect TimeCamp,</b> the best time tracking software, with your currently used apps.</Text>
             
-            <Link fontWeight='500' color='green'>Check integrations</Link>
+            <Link fontWeight='500' color='#25cf60'>Check integrations</Link>
            
           </Stack>
 
