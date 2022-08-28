@@ -66,7 +66,7 @@ const AddProject = ({setInputBox,projectId}) => {
     <Box width={"100%"} height="100%" borderRadius={"7px"} border={"1px solid grey"} p="4" >
         <Stack gap={"10px"} fontFamily={"sans-serif"}>
            <Flex justifyContent={"space-between"} alignItems="center">
-             <Text fontWeight="semibold" >Edit Task</Text>
+             <Text fontWeight="semibold" >Edit Project</Text>
              <Button onClick={() => setInputBox("")} size={"xs"} variant={"outline"} fontWeight="normal" bgColor={"#fff"} >X</Button>
            </Flex>
            <Input type={"text"} focusBorderColor='#25cf60' onChange={(e) => setUpdatedProject(e.target.value)} value={updatedproject} border={"0.2px solid gray"} placeholder='Search' width={"100%"} />

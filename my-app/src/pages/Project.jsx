@@ -1,7 +1,7 @@
-import { Box, Button, Input,Image, Popover, PopoverBody,Text, PopoverContent, PopoverTrigger, Select, Stack, Heading } from '@chakra-ui/react'
+import { Box, Button, Input,Image, Popover, PopoverBody,Text, PopoverContent, PopoverTrigger, Select, Heading } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { AiOutlineArrowsAlt } from 'react-icons/ai';
-import { BiFilterAlt } from 'react-icons/bi';
+// import { BiFilterAlt } from 'react-icons/bi';
 import { BsThreeDots } from 'react-icons/bs';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useDispatch,useSelector } from "react-redux/es/exports";
@@ -52,8 +52,6 @@ const Project = () => {
   }
 
 
-
-
   {
     return (
     isLoading ?  <Box width={"100%"} display={"flex"} justifyContent="center"><Image src="https://app.timecamp.com/res/css/images/loader.gif"/></Box> : isError ?  <Box><Heading>Something Went Wrong...</Heading></Box> : 
@@ -94,7 +92,7 @@ const Project = () => {
       {/* create new  Project  box */}
 
       <Box height={"100%"} width="60%" >
-        { addProject ? <Box width={"100%"} height="20" p="6"  display="flex" justifyContent="space-between" >
+        { addProject ? <Box width={"95%"} m="auto" height="20"  display="flex" justifyContent="space-between" >
           <Input type="text" onChange={(e) => setNewProject(e.target.value)} fontSize={"15px"} focusBorderColor='#25cf60' border={"0.2px solid gray"} fontWeight="semibold" placeholder='Enter the name for new project or task...' width={"380px"} />
           <Button onClick={handleCreateProject} color={"aliceblue"} bgColor="#25cf60" _hover={{opacity:"0.7"}}>Create new project</Button>
           <Button variant={"outline"} fontWeight="normal" bgColor={"#fff"} onClick={() => setAddProject(false)} color="gray.600">Cancel</Button>
@@ -115,9 +113,9 @@ const Project = () => {
       </Box>
 
       {/* task Addition Box */}
-      <Outlet/>
+      {/* <Outlet/> */}
        <Box height={"100%"} width="40%">
-       { inputBox == "Project" ? <AddProject  projectId={projectId}  setInputBox={() => setInputBox()}/> : inputBox == "Task" ? <Addtask setInputBox={() => setInputBox()}/> :<Box height={"32"} borderRadius="5px" width="100%" border={"0.5px solid gray"} display="flex" alignItems={"center"} justifyContent="center" >
+       { inputBox == "Project" ? <AddProject  projectId={projectId}  setInputBox={() => setInputBox()}/> : inputBox == "Task" ? <Addtask projectId={projectId} setInputBox={() => setInputBox()}/> :<Box height={"32"} borderRadius="5px" width="100%" border={"0.5px solid gray"} display="flex" alignItems={"center"} justifyContent="center" >
           <Text fontSize={"18px"} fontWeight="semibold" color={"gray.400"} >Choose project or task to edit</Text>
         </Box>
        }

@@ -31,7 +31,7 @@ import { FiUser } from "react-icons/fi";
 import { FaDownload } from "react-icons/fa";
 import { FaFirefoxBrowser } from "react-icons/fa";
 import { CgLogOff } from "react-icons/cg";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import TimeSheet from "./TimeSheet";
 import Dashboard from "./Dashboard";
 import { useEffect } from "react";
@@ -39,6 +39,10 @@ import Project from "./Project";
 import User from "./User";
 import Tags from "./Tags";
 import axios from "axios";
+import { getProject } from "../store/project/action";
+import { useDispatch, useSelector } from 'react-redux/es/exports';
+import InvoiceRouter from "../Sandeep/sRouter/InvoiceRouter";
+
 
 // import Reports from '../components/Reports';
 
@@ -49,6 +53,8 @@ const HomePage = () => {
 
   // related to googleauth
   const [userdata, setUserdata] = useState("");
+
+  const navigate = useNavigate()
 
   const location = useLocation();
 
@@ -66,6 +72,9 @@ const HomePage = () => {
     }
     else if(location.pathname == "/user"){
       setCurrComp("Users")
+    }
+    else if(location.pathname == "/subscription"){
+      setCurrComp("Subscription")
     }
     
   };
@@ -95,6 +104,17 @@ const HomePage = () => {
         }
       },[userdata])
     // relared to google auth ended here
+
+    const project = useSelector(state => state.project.project);
+    console.log("project",project);
+
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+      dispatch(getProject())
+    },[])
+
+
   return (
     <Box height={"100vh"} width="100" display="flex">
       <MySidebar setboxWidth={handleToogle} currComp={currComp} />
@@ -127,6 +147,7 @@ const HomePage = () => {
               _hover={{ backgroundColor: "#b58b00" }}
               backgroundColor={"#f7b801"}
               color="aliceblue"
+              onClick={() => navigate("/subscription")}
             >
               Subscribe to Pro
             </Button>
@@ -351,6 +372,7 @@ const HomePage = () => {
                       alignItems="center"
                       p={"4"}
                       gap="25px"
+                      onClick={() => localStorage.removeItem("token")}
                     >
                       <CgLogOff size={"25px"} color="gray" />
                       <Text fontSize={"18px"}>Logout</Text>
@@ -374,7 +396,10 @@ const HomePage = () => {
             <Tags />
           ) : location.pathname == "/user" ? (
             <User />
-          ) : null}
+          ) : location.pathname == "/subscription" ?
+            <InvoiceRouter/>
+            :
+           null}
         </Box>
       </Box>
     </Box>

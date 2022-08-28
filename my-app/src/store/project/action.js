@@ -10,7 +10,7 @@ const getProject = () => (dispatch) => {
         }
     })
     .then((r) => {
-        console.log("get",r.data);
+        // console.log("get",r.data);
         dispatch({type:types.GET_PROJECT_SUCCESS,payload:r.data})
     })
     .catch((err) => {

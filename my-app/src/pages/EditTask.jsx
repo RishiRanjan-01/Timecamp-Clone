@@ -6,43 +6,13 @@ import { AiFillSetting } from 'react-icons/ai';
 // import { FaUserCircle } from 'react-icons/fa'
 import { FiEdit } from 'react-icons/fi';
 // import { RiDeleteBinLine } from 'react-icons/ri';
-import { useDispatch } from "react-redux/es/exports";
+import { useDispatch, useSelector } from "react-redux/es/exports";
 import { createTask, getTask } from '../store/task/action';
 
+
 const Addtask = ({setInputBox,projectId}) => {
-    const [project, setProject] = useState({});
-    const [description, setDescription] = useState(false);
-    const [title, setTitle] = useState("")
 
-    console.log(projectId);
-    const dispatch = useDispatch();
-
-    const getSingleProject = () => {
-      axios.get(`http://localhost:8080/project/${projectId}`,{
-        headers: {
-          Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token
-       }
-      })
-      .then((r) => {
-        setProject(r.data)
-      })
-    }
-
-    const handleCreateTask = () => {
-      const payload = {
-        title,
-      }
-      dispatch(createTask(payload,projectId))
-      .then((r) => {
-        if(r.type == "ADD_TASK_SUCCESS"){
-          dispatch(getTask(projectId))
-        }
-      })
-    }
-
-    useEffect(() => {
-      getSingleProject()
-    },[projectId])
+    
 
   return (
     <Box width={"100%"} height="100%" borderRadius={"7px"} border={"1px solid grey"} p="4" >

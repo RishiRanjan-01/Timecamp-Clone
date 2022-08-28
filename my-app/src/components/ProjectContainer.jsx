@@ -1,40 +1,46 @@
 import { Box,Button,Flex,Popover,PopoverBody,PopoverContent,PopoverTrigger,Text, useDisclosure } from '@chakra-ui/react';
-import {
-    AlertDialog,
-    AlertDialogBody,
-    AlertDialogFooter,
-    AlertDialogHeader,
-    AlertDialogContent,
-    AlertDialogOverlay,
-  } from '@chakra-ui/react'
+// import {
+//     AlertDialog,
+//     AlertDialogBody,
+//     AlertDialogFooter,
+//     AlertDialogHeader,
+//     AlertDialogContent,
+//     AlertDialogOverlay,
+//   } from '@chakra-ui/react'
 import React from 'react';
 import { useState } from 'react';
 import { BsFillPlayFill, BsThreeDots } from 'react-icons/bs';
 import { TbChartPie } from 'react-icons/tb';
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from 'react-icons/md';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios';
+// import axios from 'axios';
 import { useEffect } from 'react';
 import { useDispatch,useSelector } from "react-redux/es/exports";
-import { deleteProject, getProject } from '../store/project/action';
+// import { deleteProject, getProject } from '../store/project/action';
 import { ProjectTodo } from "./ProjectTodo"
 import { AlertDialogExample } from './AlertDialogExample';
+import { getTask } from '../store/task/action';
 
 const ProjectContainer = ({setInputBox,projectData,setProjectId}) => {
   // console.log(projectData);
     const [projectDes, setProjectDes] = useState(false)
     const { isOpen, onOpen, onClose } = useDisclosure();
 
+    const dispatch = useDispatch();
+
+    const tasks =  useSelector( state => state.task.tasks)
+    // console.log("tasks",tasks);
+
     const handleProject = (e) => {
       e.stopPropagation()
-       
+        setProjectDes(!projectDes);
         setInputBox("Project");
-        setProjectId(projectData._id) 
+        setProjectId(projectData._id);
+        dispatch(getTask(projectData._id)) 
     }
 
     const handleProjectInput = (e) => {
       e.stopPropagation()
-      setProjectDes(!projectDes);
       setInputBox("Task");
     }
 
@@ -45,6 +51,10 @@ const ProjectContainer = ({setInputBox,projectData,setProjectId}) => {
     const mouseLeave = () => {
       onClose();
     }
+
+    useEffect(() => {
+      dispatch(getTask(projectData._id))
+    },[])
 
     const navigate = useNavigate();
 
@@ -93,24 +103,27 @@ const ProjectContainer = ({setInputBox,projectData,setProjectId}) => {
         }
      </Box>
 
-     
-     {/* {
-        projectDes ? <ProjectTodo setInputBox={setInputBox}/> : null
-     }  */}
+     {
+        projectDes ? 
+        <>
+        {
+          tasks?.length > 0 && tasks.map((item) => {
+            return <ProjectTodo proejctId={projectData._id} taskItem = {item} key={item._id}/>
+          })
+        }
+        </>
+         : null
+     } 
     </Box>
   )
 }
 
 
 
-// ________________________________________________________________________________________________________________
-
-
 
 
 
 // __________________________________________________________________________________________________________________
-
 
 
 // Add deployed backend URL
