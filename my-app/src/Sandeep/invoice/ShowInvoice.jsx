@@ -23,7 +23,7 @@ const ShowInvoice = () => {
   useEffect(() => {
     setLoading(true);
     axios
-      .get("http://localhost:8080/invoice/")
+      .get("https://pure-fjord-44762.herokuapp.com/invoice/")
       .then((res) => {
         setInvoiceData(res.data);
         setLoading(false);

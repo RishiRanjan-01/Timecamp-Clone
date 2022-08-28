@@ -75,7 +75,7 @@ const User = () => {
         <Box  ml="6" display={"flex"} gap="15px" p="4" alignItems={"center"}>
           <input type="checkbox"/>
           <FaUserCircle size="25px" />
-          <Text color="#4294f8" fontWeight={"semibold"}>{project[5]?.email}</Text>
+          <Text color="#4294f8" fontWeight={"semibold"}>{project[0]?.email}</Text>
           <Text fontWeight={"semibold"}>Account owner</Text>
         </Box>
         <Td></Td>

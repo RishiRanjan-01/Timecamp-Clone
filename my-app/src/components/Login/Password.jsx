@@ -20,7 +20,7 @@ const Password = () => {
 
     axios({
       method: "post",
-      url: "http://localhost:8000/user/updateuser",
+      url: "https://pure-fjord-44762.herokuapp.com/user/updateuser",
       data:creds
     }).then((res) => setFlag(res.data));
   };

@@ -18,7 +18,7 @@ const Forgotpassword = () => {
 
     axios({
       method: "GET",
-      url: "http://localhost:8000/user/getuser",
+      url: "https://pure-fjord-44762.herokuapp.com/user/getuser",
       headers:creds
     }).then((res) => setFlag(res.data));
   }

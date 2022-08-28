@@ -3,8 +3,7 @@ import axios from "axios";
 
 const getProject = () => (dispatch) => {
     dispatch({type:types.GET_PROJECT_REQUEST})
-    localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpc2hpQGdtYWlsLmNvbSIsInVzZXJJZCI6IjYzMDk2MWM0ZjI2Zjk3MTI1YmNkOTdlMiIsImlhdCI6MTY2MTY4MjYwNX0.WXUZQQXuLZrAAa9hNiKuRrDW69epInVHxl8dyf3nan8")
-    axios.get("http://localhost:8080/project/",{
+    axios.get("https://pure-fjord-44762.herokuapp.com/project/",{
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token
         }
@@ -21,7 +20,7 @@ const getProject = () => (dispatch) => {
 const createProject = (payload) => (dispatch) => {
     dispatch({type:types.ADD_PROJECT_REQUEST})
 
-    return axios.post('http://localhost:8080/project/create',{...payload},{
+    return axios.post('https://pure-fjord-44762.herokuapp.com/project/create',{...payload},{
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token
         }
@@ -37,7 +36,7 @@ const createProject = (payload) => (dispatch) => {
 const updateProject = (payload,id) => (dispatch) => {
     dispatch({type:types.UPDATE_PROJECT_REQUEST})
 
-    return axios.patch(`http://localhost:8080/project/${id}/edit`,{...payload},{
+    return axios.patch(`https://pure-fjord-44762.herokuapp.com/project/${id}/edit`,{...payload},{
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token
         }
@@ -54,7 +53,7 @@ const updateProject = (payload,id) => (dispatch) => {
 const deleteProject = (id) => (dispatch) => {
     dispatch({type:types.DELETE_PROJECT_REQUEST})
 
-   return axios.delete(`http://localhost:8080/project/${id}/delete`,{
+   return axios.delete(`https://pure-fjord-44762.herokuapp.com/project/${id}/delete`,{
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token
         }

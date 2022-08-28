@@ -24,7 +24,7 @@ const LoginBox = () => {
 
     axios({
       method: "post",
-      url: "http://localhost:8000/user/login",
+      url: "https://pure-fjord-44762.herokuapp.com/user/login",
       data: usercreds,
       
     }).then((res) => (localStorage.setItem("token", res.data.token),setFlag(res.data.message),setRouteflag(res.data.message)));
@@ -32,7 +32,7 @@ const LoginBox = () => {
 
   const handlegoogleauth = () => {
     localStorage.setItem("google", true);
-     window.open("http://localhost:8000/auth/google");
+     window.open("https://pure-fjord-44762.herokuapp.com/auth/google");
   };
 
   const handlesignup = () => {
@@ -41,7 +41,7 @@ const LoginBox = () => {
 
   useEffect(() => {
     if (routeflag === "Login Successfull") {
-      navigate("/homepage", { replace: true });
+      navigate("/homepage/timesheet", { replace: true });
     }
   }, [routeflag]);
 

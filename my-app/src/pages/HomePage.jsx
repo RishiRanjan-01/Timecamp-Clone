@@ -100,7 +100,7 @@ const HomePage = () => {
       useEffect(() => {
         if (localStorage.getItem("google")) {
           axios
-            .get("http://localhost:8000/googleuser")
+            .get("https://pure-fjord-44762.herokuapp.com/googleuser")
             .then((res) => setUserdata(res.data));
         }
       }, []);

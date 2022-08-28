@@ -29,7 +29,7 @@ const Signuppage = () => {
 
         axios({
           method: "post",
-          url: "http://localhost:8000/user/register",
+          url: "https://pure-fjord-44762.herokuapp.com/user/register",
           data: usercreds,
         }).then((res) => (setFlag(res.data),result=res.data));
 
@@ -46,7 +46,7 @@ const Signuppage = () => {
 
      const handlegoogleauth = () => {
       localStorage.setItem("google",true);
-       window.open("http://localhost:8000/auth/google");
+       window.open("https://pure-fjord-44762.herokuapp.com/auth/google");
      };
 
   return (

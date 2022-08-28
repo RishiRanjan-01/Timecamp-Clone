@@ -18,7 +18,7 @@ const Addtask = ({setInputBox,projectId}) => {
     const dispatch = useDispatch();
 
     const getSingleProject = () => {
-      axios.get(`http://localhost:8080/project/${projectId}`,{
+      axios.get(`https://pure-fjord-44762.herokuapp.com/project/${projectId}`,{
         headers: {
           Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token
        }
