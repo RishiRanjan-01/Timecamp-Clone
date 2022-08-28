@@ -132,7 +132,7 @@ const DesktopNav = () => {
           </Popover>
         </Flex>
       ))}
-      <Button bgColor="yellow" borderRadius='20px' px='5'>Start tracking time</Button>
+      <Button bgColor="#f7b801" color='white' borderRadius='20px' px='5'>Start tracking time</Button>
     </Flex>
   );
 };
@@ -145,7 +145,7 @@ const DesktopSubNav = ({ label, href }) => {
       display={'block'}
       p={2}
       rounded={'md'}
-      _hover={{ bg: useColorModeValue('green', 'gray.900') }}>
+      _hover={{ bg: useColorModeValue('#25cf60', 'gray.900') }}>
       <Stack direction={'row'} align={'center'}>
        
           <Text
@@ -180,7 +180,7 @@ const MobileNav = () => {
       {NAV_ITEMS.map((navItem) => (
         <MobileNavItem key={navItem.label} {...navItem} />
       ))}
-      <Button bgColor="yellow" borderRadius='20px' px='5'>Start tracking time</Button>
+      <Button bgColor="#f7b801" color='white' borderRadius='20px' px='5'>Start tracking time</Button>
 
     </Stack>
   );

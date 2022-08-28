@@ -37,13 +37,13 @@ const Demo = () => {
 
         <Flex my='10' direction={{base:'column',lg:'row'}} fontWeight='bold' justifyContent='center' textAlign='center' gap='5'>
             <Text>Want to track time in your team ?</Text>
-            <Text color='green'>Book a Demo <ArrowForwardIcon/></Text>
+            <Text color='#25cf60'>Book a Demo <ArrowForwardIcon/></Text>
         </Flex>
         <Heading textAlign={{base:'start',lg:'center'}} m='auto' w='80%' >Try an automatic, easy-to-use time tracker for the entire organization!</Heading>
     </Box>
 
     <Box w='90%' m='auto'>
-    <Text color='green' fontWeight='700'>FOR EMPLOYEES</Text>
+    <Text color='#25cf60' fontWeight='700'>FOR EMPLOYEES</Text>
     <Heading my='5'>Track your employees working time</Heading>
     <Text my='5' fontWeight='500'>Log working hours of your employees automatically or manually and make sure they are billed fairly.</Text>
 <Accordion allowToggle>
@@ -53,9 +53,9 @@ const Demo = () => {
 })}
 </Accordion>
 
-<Box my='10' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Track employees time</Box>
+<Box my='20' display='inline-block' py='3' px='7' color='white' bgColor='#25cf60' borderRadius='25px' >Track employees time</Box>
 
-    <Text color='green' fontWeight='700'>FOR MANAGRESS</Text>
+    <Text color='#25cf60' fontWeight='700'>FOR MANAGRESS</Text>
     <Heading my='5'>Track project time and budget easier than ever before</Heading>
     <Text my='5' fontWeight='500'>Stay on top of your team’s performance and create accurate resource estimates for all the projects.</Text>
 <Accordion allowToggle>
@@ -65,9 +65,9 @@ const Demo = () => {
 })}
 </Accordion>
 
-<Box my='10' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Increase team productivity</Box>
+<Box my='20' display='inline-block' py='3' px='7' color='white' bgColor='#25cf60' borderRadius='25px' >Increase team productivity</Box>
 
-    <Text color='green' fontWeight='700'>ENTERPRISE</Text>
+    <Text color='#25cf60' fontWeight='700'>ENTERPRISE</Text>
     <Heading my='5'>Try enterprise time tracking at the highest level</Heading>
     <Text my='5' fontWeight='500'>Custom needs? No problem! Contact us, and we will definitely find a perfect solution for your enterprise.</Text>
 <Accordion allowToggle>
@@ -77,9 +77,9 @@ const Demo = () => {
 })}
 </Accordion>
 
-<Box my='10' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Contact for customized solution</Box>
+<Box my='20' display='inline-block' py='3' px='7' color='white' bgColor='#25cf60' borderRadius='25px' >Contact for customized solution</Box>
 
-    <Text color='green' fontWeight='700' >FOR HR</Text>
+    <Text color='#25cf60' fontWeight='700' >FOR HR</Text>
     <Heading my='5'>Check Timesheets and control attendance in one place</Heading>
     <Text my='5' fontWeight='500'>With TimeCamp you can forget about endless stacks of papers! Take advantage of convenient and easy to use tools to support your daily HR and payroll work..</Text>
 <Accordion allowToggle>
@@ -89,7 +89,7 @@ const Demo = () => {
 })}
 </Accordion>
 
-<Box my='20' display='inline-block' py='3' px='7' color='white' bgColor='green' borderRadius='25px' >Make HR's work easier</Box>
+<Box my='20' display='inline-block' py='3' px='7' color='white' bgColor='#25cf60' borderRadius='25px' >Make HR's work easier</Box>
     </Box>
     </>
   )
