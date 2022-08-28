@@ -36,7 +36,7 @@ userroute.post("/login", async (req, res) => {
   const user = await UserModel.findOne({ email });
 
   if (user) {
-    bcrypt.compare(password, user.password).then(function (result) {
+   await bcrypt.compare(password, user.password).then(function (result) {
       if (result) {
         const token = jwt.sign(
           { email: email, userId: user._id },
@@ -44,11 +44,12 @@ userroute.post("/login", async (req, res) => {
         );
        return res.send({ message: "Login Successfull", token });
       }else{
-         res.send("Invalid Credentials");
+        return res.send("Invalid Credentials");
       }
     });
-  } else {
-    return ;
+  }
+  else{
+    return res.send("Not Found")
   }
 });
 

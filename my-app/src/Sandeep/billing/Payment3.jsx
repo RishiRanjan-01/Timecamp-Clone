@@ -47,7 +47,7 @@ const Payment3 = () => {
       }
       let pro="pro"
          localStorage.setItem('pro',pro)
-         navigate('/subscription')
+         navigate('/homepage/subscription')
   }
   return (
     <Box className={styles.leftboxdetail}>

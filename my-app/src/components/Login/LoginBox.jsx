@@ -41,7 +41,7 @@ const LoginBox = () => {
 
   useEffect(() => {
     if (routeflag === "Login Successfull") {
-      navigate("/", { replace: true });
+      navigate("/homepage", { replace: true });
     }
   }, [routeflag]);
 

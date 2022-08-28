@@ -15,7 +15,7 @@ import { AiOutlineDoubleRight } from "react-icons/ai";
 import { BsDownload } from "react-icons/bs";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 
-const MyDashboard = () => {
+const Dashboard = () => {
   return (
     <Box justifyContent={"space-between"} display={"flex"} p="6">
       <Box>
@@ -162,4 +162,4 @@ const MyDashboard = () => {
   );
 };
 
-export default MyDashboard;
+export default Dashboard;

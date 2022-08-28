@@ -11,7 +11,7 @@ import Tabbs from '../tabs/Tabs'
 const InvoiceRouter = () => {
   return (
       <Box>
-        <Tabbs/>
+        {/* <Tabbs/> */}
          <Routes>
         <Route path='/billing' element={<Billing/>}/>
         <Route path='/invoice' element={<ShowInvoice/>}/>

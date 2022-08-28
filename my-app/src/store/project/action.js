@@ -3,7 +3,7 @@ import axios from "axios";
 
 const getProject = () => (dispatch) => {
     dispatch({type:types.GET_PROJECT_REQUEST})
-    localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpc2hpQGdtYWlsLmNvbSIsInVzZXJJZCI6IjYzMDk2MWM0ZjI2Zjk3MTI1YmNkOTdlMiIsImlhdCI6MTY2MTU4ODg3N30.CS_aswAQq6yVVYX7LMOiBDZ2C5ZjZFnN-iPoSV22l6w")
+    localStorage.setItem("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJpc2hpQGdtYWlsLmNvbSIsInVzZXJJZCI6IjYzMDk2MWM0ZjI2Zjk3MTI1YmNkOTdlMiIsImlhdCI6MTY2MTY4MjYwNX0.WXUZQQXuLZrAAa9hNiKuRrDW69epInVHxl8dyf3nan8")
     axios.get("http://localhost:8080/project/",{
         headers: {
             Authorization: `Bearer ${localStorage.getItem("token")}` //the token is a variable which holds the token

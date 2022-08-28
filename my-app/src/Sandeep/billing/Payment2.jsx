@@ -56,7 +56,7 @@ const Payment2 = () => {
           }
        
        localStorage.setItem('pro',pro)
-       navigate('/subscription')
+       navigate('/homepage/subscription')
     
 }
   return (

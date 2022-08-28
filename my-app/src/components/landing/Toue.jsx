@@ -1,5 +1,5 @@
 import React from 'react'
-import toue from "../images/toue.png"
+import toue from "../landing/images/toue.png"
 import {
   Box,
  Flex,

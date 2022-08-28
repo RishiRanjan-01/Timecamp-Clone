@@ -1,6 +1,6 @@
 import React from 'react'
 import Upnav from './Upnav'
-import Navbar from "../components/Navbar"
+import Navbar from "../landing/Navbar"
 import Home from './home page/Home'
 import Toue from "./Toue"
 import Demo from "./demo/Demo"

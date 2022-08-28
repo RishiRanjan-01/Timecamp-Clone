@@ -21,7 +21,7 @@ import {
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import Logo from "../images/logo.svg"
+import Logo from "../landing/images/logo.svg"
 
 export default function WithSubnavigation() {
   const { isOpen, onToggle } = useDisclosure();
@@ -321,6 +321,6 @@ const NAV_ITEMS = [
   },
   {
     label: 'Sign in',
-    href: '#',
+    href: '/loginpage',
   },
 ];

@@ -102,7 +102,7 @@ function PaymentCard() {
       },4000)
 
       setTimeout(function(){
-        navigate("/invoice")
+        navigate("/homepage/invoice")
       },10000)
     } 
   }

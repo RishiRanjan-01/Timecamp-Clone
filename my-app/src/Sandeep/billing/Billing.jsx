@@ -8,12 +8,16 @@ import Payment from "./Payment";
 import Payment4 from "./Payment4";
 import Payment3 from "./Payment3";
 import Payment2 from "./Payment2";
+import Tabbs from "../tabs/Tabs";
 
 const Billing = () => {
   const [toggle, setToggle] = useState("C");
 
   return (
-    <Box padding={'5px 0px 0px 20px'}>
+    <>
+    <Tabbs/>
+
+    <Box padding={'5px 0px 0px 20px'}  height={"76vh"} overflowY="scroll" >
       <Box>
         <Center
           border={"1px solid  lightgrey"}
@@ -149,6 +153,7 @@ const Billing = () => {
         </section>
       </Box>
     </Box>
+    </>
   );
 };
 

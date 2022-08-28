@@ -31,7 +31,7 @@ import { FiUser } from "react-icons/fi";
 import { FaDownload } from "react-icons/fa";
 import { FaFirefoxBrowser } from "react-icons/fa";
 import { CgLogOff } from "react-icons/cg";
-import { useLocation, useNavigate } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import TimeSheet from "./TimeSheet";
 import Dashboard from "./Dashboard";
 import { useEffect } from "react";
@@ -42,6 +42,7 @@ import axios from "axios";
 import { getProject } from "../store/project/action";
 import { useDispatch, useSelector } from 'react-redux/es/exports';
 import InvoiceRouter from "../Sandeep/sRouter/InvoiceRouter";
+import Tabbs from "../Sandeep/tabs/Tabs";
 
 
 // import Reports from '../components/Reports';
@@ -57,29 +58,35 @@ const HomePage = () => {
   const navigate = useNavigate()
 
   const location = useLocation();
-
+  console.log(location);
   const getComponents = () => {
-    if (location.pathname == "/") {
+    if (location.pathname == "/homepage/timesheet") {
       setCurrComp("TimeSheet");
-    } else if (location.pathname == "/dashboard") {
+    } else if (location.pathname == "/homepage/dashboard") {
       setCurrComp("Dashboard");
     }
-    else if(location.pathname == "/projects"){
+    else if(location.pathname == "/homepage/projects"){
       setCurrComp("Projects")
     }
-    else if(location.pathname == "/tags"){
+    else if(location.pathname == "/homepage/tags"){
       setCurrComp("Tags")
     }
-    else if(location.pathname == "/user"){
+    else if(location.pathname == "/homepage/user"){
       setCurrComp("Users")
     }
-    else if(location.pathname == "/subscription"){
+    else if(location.pathname == "homepage/subscription"){
       setCurrComp("Subscription")
     }
     
   };
 
-  console.log(currComp);
+  // console.log(currComp);
+
+  const handleLogout = () => {
+    localStorage.removeItem("token");
+    localStorage.setItem("google",false)
+    navigate("/")
+  }
 
   useEffect(() => {
     getComponents();
@@ -143,14 +150,16 @@ const HomePage = () => {
               {" "}
               <b>12 days</b> left in your Pro trial{" "}
             </Text>
+            {/* <Link to="/homepage/billing"> */}
             <Button
               _hover={{ backgroundColor: "#b58b00" }}
               backgroundColor={"#f7b801"}
               color="aliceblue"
-              onClick={() => navigate("/subscription")}
+              onClick={() => navigate("/homepage/billing")}
             >
               Subscribe to Pro
             </Button>
+            {/* </Link> */}
             <Button
               backgroundColor={"#fff"}
               fontWeight="normal"
@@ -372,7 +381,7 @@ const HomePage = () => {
                       alignItems="center"
                       p={"4"}
                       gap="25px"
-                      onClick={() => localStorage.removeItem("token")}
+                      onClick={handleLogout}
                     >
                       <CgLogOff size={"25px"} color="gray" />
                       <Text fontSize={"18px"}>Logout</Text>
@@ -383,25 +392,13 @@ const HomePage = () => {
             </Box>
           </Box>
         </Box>
+
         {/* Components Sections */}
         <Box height={"83%"} width="100%">
-          {/* Components todo */}
-          {location.pathname == "/" ? (
-            <TimeSheet />
-          ) : location.pathname == "/dashboard" ? (
-            <Dashboard />
-          ) : location.pathname == "/projects" ? (
-            <Project />
-          ) : location.pathname == "/tags" ? (
-            <Tags />
-          ) : location.pathname == "/user" ? (
-            <User />
-          ) : location.pathname == "/subscription" ?
-            <InvoiceRouter/>
-            :
-           null}
+          <Outlet/>         
         </Box>
       </Box>
+      
     </Box>
   );
 };

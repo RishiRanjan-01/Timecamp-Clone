@@ -4,6 +4,7 @@ import { BiArrowToLeft } from 'react-icons/bi'
 import { BsArrowBarLeft, BsArrowLeftShort } from 'react-icons/bs'
 import { NavLink } from 'react-router-dom'
 import CountryDropDown from '../invoice/CountryDropDown'
+import Tabbs from '../tabs/Tabs'
 
 const BillingAddress = () => {
 
@@ -25,6 +26,8 @@ const BillingAddress = () => {
            
       }
   return (
+    <>
+    <Tabbs/>
     <Box w={"50%"} padding={'40px'}>
           <form w={"100%"}>
            
@@ -108,7 +111,8 @@ const BillingAddress = () => {
 
             
            </form>
-           </Box>     
+           </Box> 
+           </>    
   )
 }
 

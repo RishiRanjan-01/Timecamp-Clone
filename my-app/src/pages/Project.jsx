@@ -56,7 +56,7 @@ const Project = () => {
     return (
     isLoading ?  <Box width={"100%"} display={"flex"} justifyContent="center"><Image src="https://app.timecamp.com/res/css/images/loader.gif"/></Box> : isError ?  <Box><Heading>Something Went Wrong...</Heading></Box> : 
     <>  
-    <Box height={"24"} p="6" width="100%"  >
+    <Box height={"24"} p="6" width="100%"  zIndex={-1}  >
       <Box display={"flex"} gap="15px" alignItems={"center"} >
         <Input focusBorderColor='#25cf60' border={"0.2px solid gray"} placeholder='Search' width={ addProject ? "280px" : "200px"} />
         { !addProject ? <Button onClick={handleAddProject} color={"aliceblue"} bgColor="#25cf60" _hover={{opacity:"0.7"}} >Add Project</Button> : null}
@@ -92,7 +92,7 @@ const Project = () => {
       {/* create new  Project  box */}
 
       <Box height={"100%"} width="60%" >
-        { addProject ? <Box width={"95%"} m="auto" height="20"  display="flex" justifyContent="space-between" >
+        { addProject ? <Box width={"95%"} m="auto" height="20"   display="flex" justifyContent="space-between" >
           <Input type="text" onChange={(e) => setNewProject(e.target.value)} fontSize={"15px"} focusBorderColor='#25cf60' border={"0.2px solid gray"} fontWeight="semibold" placeholder='Enter the name for new project or task...' width={"380px"} />
           <Button onClick={handleCreateProject} color={"aliceblue"} bgColor="#25cf60" _hover={{opacity:"0.7"}}>Create new project</Button>
           <Button variant={"outline"} fontWeight="normal" bgColor={"#fff"} onClick={() => setAddProject(false)} color="gray.600">Cancel</Button>

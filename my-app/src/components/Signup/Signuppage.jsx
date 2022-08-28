@@ -40,7 +40,7 @@ const Signuppage = () => {
 
     useEffect(() => {
       if (flag === "Signup Successfull") {
-        navigate("/", { replace: true });
+        navigate("/loginpage", { replace: true });
       }
     }, [flag]);
 

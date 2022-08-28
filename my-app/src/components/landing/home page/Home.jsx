@@ -6,7 +6,7 @@ import {
   Flex
 } from '@chakra-ui/react';
 import Styles from "../home page/Home.module.css"
-import google from "../../images/google.svg"
+import google from "../images/google.svg"
 import Navbar from "../Navbar"
 const Home = () => {
   return (

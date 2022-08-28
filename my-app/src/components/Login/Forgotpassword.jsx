@@ -57,7 +57,7 @@ const Forgotpassword = () => {
         </Text>
 
         <Divider width="96%" marginTop="20px" />
-        <Box
+        { flag == "" ? null : <Box
           hidden={flag !== "Valid" ? false : true}
           backgroundColor="#f2dede"
           border="1px solid #f2dede"
@@ -72,7 +72,7 @@ const Forgotpassword = () => {
           fontSize="14px"
         >
           <Text>{flag}</Text>
-        </Box>
+        </Box>}
 
         <Box display="flex" alignItems="center" marginTop="25px" gap="7%">
           <Text>E-mail</Text>

@@ -14,7 +14,7 @@ import { AiOutlineCheckSquare } from "react-icons/ai";
 import Reports from './Reports';
 import Computertime from './Computertime';
 import { useRef } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const MySidebar = ({setboxWidth, currComp}) => {
     const [toggle, setToggle ] = useState(false);
@@ -37,22 +37,28 @@ const MySidebar = ({setboxWidth, currComp}) => {
 
         {/* Time sheet */}
 
+        <Link to="/homepage/timesheet">
         <Box height={"24"} width="100%" borderBottom={"1px solid grey"} alignContent="center" p="4">
             <Text fontSize={"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>TRACK</Text>
-            <Flex onClick={ () => navigate("/") }  width={"80%"} mt={toggle ? "2" : "4"} justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+            <Flex  width={"80%"} mt={toggle ? "2" : "4"} justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <BiTimeFive size={"25px"} color={currComp == "TimeSheet" ? "#25cf60" : "gray"}/>
                 { toggle ? null : <Text fontSize={"15px"} color={currComp == "TimeSheet" ? "#25cf60" : "gray"} fontWeight="semibold" >Timesheet</Text>}
             </Flex>
         </Box>
+        </Link>
 
         {/* Analyze */}
-
+        
         <Box height={"48"} width="100%" borderBottom={"1px solid grey"} alignContent="center" p="4">
             <Text fontSize={toggle ? "10px" :"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>ANALYZE</Text>
-            <Flex width={"80%"} onClick={ () => navigate("/dashboard") }  mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+            
+            <Link to="/homepage/dashboard">
+            <Flex width={"80%"}   mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <AiFillDashboard size={"25px"} color={currComp == "Dashboard" ? "#25cf60" : "gray"}/>
                 { toggle ? null : <Text fontSize={"15px"} color={currComp == "Dashboard" ? "#25cf60" : "gray"} fontWeight="semibold" >Dashboard</Text>}
             </Flex>
+            </Link>
+
             <Flex width={"88%"} mt= "2"  justifyContent="center" height={"40px"} alignItems={"center"} gap={"20px"}>
                 {/* <TbChartPie size={"25px"} color="gray"/> */}
                 { toggle ? <TbChartPie size={"25px"} color="gray"/> : <Reports toggle={toggle}/>}
@@ -69,24 +75,32 @@ const MySidebar = ({setboxWidth, currComp}) => {
 
         <Box height={"36"} width="100%" borderBottom={"1px solid grey"} alignContent="center" p="4">
             <Text fontSize={ toggle ? "10px" :"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>MANAGE</Text>
+            
+            <Link to="/homepage/projects">
             <Flex width={"70%"} mt="2" onClick={ () => navigate("/projects") } justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <BsFolder2Open size={"25px"} color={currComp == "Projects" ? "#25cf60" : "gray"}/>
                 { toggle ? null : <Text fontSize={"15px"} color={currComp == "Projects" ? "#25cf60" : "gray"} fontWeight="semibold" >Projects</Text>}
             </Flex>
+            </Link>
+
+            <Link to="/homepage/tags">
             <Flex width={"60%"} justifyContent="center" onClick={ () => navigate("/tags") } mt="2" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <BsTags size={"25px"} color={currComp == "Tags" ? "#25cf60" : "gray"}/>
                 { toggle ? null : <Text fontSize={"15px"} color={currComp == "Tags" ? "#25cf60" : "gray"} fontWeight="semibold" >Tags</Text>}
             </Flex>
+            </Link>
         </Box>
 
         {/* TEAM */}
 
         <Box height={"36"} width="100%" alignContent="center" p="4">
             <Text fontSize={"13px"} w={toggle ? null : "50%"} textAlign="center" fontWeight="semibold" color={"gray.400"}>TEAM</Text>
-            <Flex width={"70%"} mt="2" onClick={ () => navigate("/user") } justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
+            <Link to="/homepage/user">
+            <Flex width={"70%"} mt="2"  justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <FiUsers size={"25px"} color={currComp == "Users" ? "#25cf60" : "gray"}/>
                 { toggle ? null : <Text fontSize={"15px"} color={currComp == "Users" ? "#25cf60" : "gray"} fontWeight="semibold" >Users</Text>}
             </Flex>
+            </Link>
             <Flex width={"85%"} mt="2" justifyContent="center" _hover={{cursor:"pointer",backgroundColor:"#f8f8f8",  borderRadius:"7px"}} height={"40px"} alignItems={"center"} gap={"20px"}>
                 <AiOutlineCheckSquare size={"25px"} color="gray"/>
                 { toggle ? null : <Text fontSize={"15px"} color="gray" fontWeight="semibold" >Attendence</Text>}
