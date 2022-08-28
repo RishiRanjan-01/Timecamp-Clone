@@ -34,11 +34,11 @@ function App() {
   return (
     <>
 
-    {/* Needed */}
+    {/* Needed  */}
 
       {/* <InvoiceInformation/>
      <InvoiceRouter/> */}
-     <HomePage/>
+     {/* <HomePage/> */}
       {/* <Routes>
 
       <Routes>
@@ -50,9 +50,12 @@ function App() {
       </Routes>
 
       {/* Needed */}
-
       {/* <Tabbs/>
      <Billing/>  */}
+
+    {/* </div> */}
+      {/* <Tabbs/> */}
+     {/* <Billing/> */}
     </>
   );
 }

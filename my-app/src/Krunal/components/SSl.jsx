@@ -9,7 +9,7 @@ import {
 
 const SSL = () => {
   return (
-    <Box  w={{base:'95%',sm:'95%',md:'95%',lg:'80%'}} margin='auto' bgColor='orange' borderRadius='30px' py='10'>
+    <Box  w={{base:'95%',sm:'95%',md:'95%',lg:'80%'}} margin='auto' bgColor='#f7b801' borderRadius='30px' py='10'>
 
    <Flex direction='column' w={{base:'90%',sm:'90%',md:'90%',lg:'70%'}} margin='auto'  textAlign='center' alignItems='center' justifyContent='center'  >
     <Heading mb='5'>Use TimeCamp to your advantage</Heading>
@@ -22,7 +22,7 @@ const SSL = () => {
       borderRadius={{base:'20px',sm:'20px',md:'20px',lg:0}} border='none' bgColor='white'/>
 
       <Flex w={{base:'100%',sm:'100%',md:'100%',lg:'50%'}} p={{base:'3',sm:'3',md:'3',lg:'0'}} 
-       alignItems='center'  justifyContent='center' color='white' borderRadius='20px' bgColor='green' textAlign='center'>Start tracking time</Flex>
+       alignItems='center'  justifyContent='center' color='white' borderRadius='20px' bgColor='#25cf60' textAlign='center'>Start tracking time</Flex>
 
     </Flex>
       <Text>By signing up you agree to our <b>Terms and Conditions</b> and <b>Privacy Policy.</b></Text>
