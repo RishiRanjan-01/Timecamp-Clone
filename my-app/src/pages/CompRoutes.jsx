@@ -8,6 +8,7 @@ import Project from './Project';
 import Tags from './Tags';
 import TimeSheet from './TimeSheet';
 import User from './User';
+import { InvoiceRouter } from "../Sandeep/sRouter/InvoiceRouter"
 
 
 const CompRoutes = () => {
@@ -22,6 +23,7 @@ const CompRoutes = () => {
         <Route path="/user" element={<User/>} />
         <Route path="/addtask" element={<Addtask/>} />
         <Route path="/addproject" element={<AddProject/>} />
+        <Route path="/subscription" element={<InvoiceRouter/>}/>
     </Routes>
   )
 }

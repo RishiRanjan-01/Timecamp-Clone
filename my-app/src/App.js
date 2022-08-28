@@ -36,12 +36,10 @@ function App() {
 
     {/* Needed */}
 
-
       {/* <InvoiceInformation/>
      <InvoiceRouter/> */}
      <HomePage/>
       {/* <Routes>
-
 
       <Routes>
         <Route path="/" element={<HomePage />}></Route>
@@ -53,11 +51,8 @@ function App() {
 
       {/* Needed */}
 
-    </div>
-      <Tabbs/>
-     <Billing/> */}
-
-
+      {/* <Tabbs/>
+     <Billing/>  */}
     </>
   );
 }
