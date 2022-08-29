@@ -18,7 +18,7 @@ const Signuppage = () => {
 
     const navigate = useNavigate();
 
-    const handlesubmit = () => {
+    const handlesubmit =  async() => {
         let usercreds = {
           "email": emailref.current.value,
           "password": passwordref.current.value,
@@ -27,7 +27,7 @@ const Signuppage = () => {
 
         let result;
 
-        axios({
+       await axios({
           method: "post",
           url: "https://pure-fjord-44762.herokuapp.com/user/register",
           data: usercreds,
