@@ -33,25 +33,25 @@ function PaymentCard() {
 
   const handleType = (type) => {
     setCardType(type);
-    console.log(type);
+    // console.log(type);
 
     if(type === "visa") {
       setCardTypeUrl(imageUrls[0]);
-      console.log("Visa")
+      // console.log("Visa")
     } else if(type === "mastercard") {
       setCardTypeUrl(imageUrls[1]);
-      console.log("Mastercard")
+      // console.log("Mastercard")
     } else if(type === "discover") {
       setCardTypeUrl(imageUrls[2]);
-      console.log("Discover")
+      // console.log("Discover")
     } else if(type === "amex") {
       setCardTypeUrl(imageUrls[3]);
-      console.log("Amex")
+      // console.log("Amex")
     } else if(type === "diners") {
-      console.log("Diners")
+      // console.log("Diners")
       setCardTypeUrl(imageUrls[4])
     } else if(type === "jcb") {
-      console.log("JCB");
+      // console.log("JCB");
       setCardTypeUrl(imageUrls[5]);
     }
   }

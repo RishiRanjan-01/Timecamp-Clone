@@ -55,10 +55,13 @@ const HomePage = () => {
   // related to googleauth
   const [userdata, setUserdata] = useState("");
 
+  //User Email
+  let email = JSON.parse(localStorage.getItem("email"))
+
   const navigate = useNavigate()
 
   const location = useLocation();
-  console.log(location);
+  // console.log(location);
   const getComponents = () => {
     if (location.pathname == "/homepage/timesheet") {
       setCurrComp("TimeSheet");
@@ -113,7 +116,7 @@ const HomePage = () => {
     // relared to google auth ended here
 
     const project = useSelector(state => state.project.project);
-    console.log("project",project);
+    // console.log("project",project);
 
     const dispatch = useDispatch();
 
@@ -351,9 +354,9 @@ const HomePage = () => {
                       <FiUser size={"35px"} color="gray" />
                       <Box>
                         <Text fontWeight={"semibold"} fontSize="15px">
-                          {"Contactme.rishiranjan"}
+                          {email}
                         </Text>
-                        <Text>{"Contactme.rishiranjan@gmail.com"}</Text>
+                        <Text>{email}</Text>
                       </Box>
                     </Box>
                     <Flex

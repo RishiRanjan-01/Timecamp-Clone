@@ -30,7 +30,7 @@ const ShowInvoice = () => {
       })
       .catch((error) => console.log(error));
   }, []);
-  console.log(InvoiceData);
+  // console.log(InvoiceData);
   if (InvoiceData.length === 0) {
     return (
       <Box marginTop={"300px"}>

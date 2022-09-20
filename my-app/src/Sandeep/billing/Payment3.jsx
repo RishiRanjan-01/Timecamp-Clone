@@ -29,7 +29,7 @@ const Payment3 = () => {
   const handleCount = (e) => {
     setCount(e.target.value);
     localStorage.setItem("count", count);
-    console.log(count)
+    // console.log(count)
   };
   const navigate=useNavigate()
   const handlePayment=()=>{

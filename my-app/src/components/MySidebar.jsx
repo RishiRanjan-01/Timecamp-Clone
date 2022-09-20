@@ -27,7 +27,7 @@ const MySidebar = ({setboxWidth, currComp}) => {
     }
 
   return (
-    <Box  height="100%" width={ toggle ? "5%" : "17%"} boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px"  >
+    <Box  height="100%" width={ toggle ? "5%" : "17%"} boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px" position={"sticky"}  >
         <Box height={"16"} borderBottom="1px solid grey" display={"flex"} alignItems="center" gap={ toggle ? "13px" :"22px"} >
         {toggle ? <Image ml="4" height={"30px"} width="45%" src="https://i.pinimg.com/474x/6a/a4/b1/6aa4b1bd5dcccf6e84495731b9f483db.jpg"/> : <Image height={"60px"} width="85%" src="https://cdn-m.timecamp.com/img/greenbranding/press/timecamp-pr-materials/svg/colorLogo.svg " data-theme-default="https://cdn-m.timecamp.com/img/greenbranding/press/timecamp-pr-materials/svg/colorLogo.svg" data-theme-darkmode="https://cdn-m.timecamp.com/img/greenbranding/press/timecamp-pr-materials/svg/colorIconWhiteLogo.svg"/>}
          <Box onClick={ handleToggle } _hover={{cursor:"pointer"}}  boxShadow="rgba(0, 0, 0, 0.35) 0px 5px 15px" height="30px"  width={"30px"} borderRadius="50%" display={"flex"} alignItems="center" justifyContent={"center"} position="relative" marginRight={"-40px"}>

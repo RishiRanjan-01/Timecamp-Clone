@@ -27,7 +27,7 @@ const LoginBox = () => {
       url: "https://pure-fjord-44762.herokuapp.com/user/login",
       data: usercreds,
       
-    }).then((res) => (localStorage.setItem("token", res.data.token),setFlag(res.data.message),setRouteflag(res.data.message)));
+    }).then((res) => (localStorage.setItem("token", res.data.token),localStorage.setItem("email",JSON.stringify(emailref.current.value)),setFlag(res.data.message),setRouteflag(res.data.message)));
   };
 
   const handlegoogleauth = () => {

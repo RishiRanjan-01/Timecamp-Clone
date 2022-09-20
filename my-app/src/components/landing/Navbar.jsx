@@ -245,11 +245,11 @@ const NAV_ITEMS = [
     children: [
       {
         label: 'Productivity tracking',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Automatic time tracking',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Reporting',
@@ -257,67 +257,67 @@ const NAV_ITEMS = [
       },
       {
         label: 'Timesheet approvals',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Invoicing',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Billing rates and budgeting',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Attendance',
-        href: '#',
+        href: '/loginpage',
       },
     ],
   },
   {
     label: 'Pricing',
-    href: '#',
+    href: '/loginpage',
   },
   {
     label: 'Integrations',
     children: [
       {
         label: 'Trello',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Google Calender',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'iCal',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Asana',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Monday.com',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'Jira',
-        href: '#',
+        href: '/loginpage',
       },
       {
         label: 'All integrations',
-        href: '#',
+        href: '/loginpage',
       }
     ],
   },
   
   {
     label: 'Blog',
-    href: '#',
+    href: '/loginpage',
   },
   {
     label: 'Book a Demo',
-    href: '#',
+    href: '/loginpage',
   },
   {
     label: 'Sign in',

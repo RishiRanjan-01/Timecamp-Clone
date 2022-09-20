@@ -28,7 +28,7 @@ const InvoiceInformation = () => {
  const toast=useToast()
   //  giving count to input to change price
   let [count, setCount] = useState(localStorage.getItem("prices"));
-   console.log(count)
+  //  console.log(count)
   //    form input data
   const [voice, setVoice] =useState({
           name:'',
@@ -80,7 +80,7 @@ const InvoiceInformation = () => {
         })
        
   }
-  console.log(voice)
+  // console.log(voice)
 
 
   

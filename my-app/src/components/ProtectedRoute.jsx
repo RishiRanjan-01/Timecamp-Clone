@@ -5,7 +5,7 @@ const ProtectedRoute = ({children}) => {
   const token = localStorage.getItem("token");
   const google = JSON.parse(localStorage.getItem("google"))
 
-  console.log(token,google);
+  // console.log(token,google);
   const navigate = useNavigate();
 
   if(token || google == true ){
